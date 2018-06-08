@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLGenerarPlanTrabajoController">
    <children>
       <AnchorPane layoutX="18.0" layoutY="314.0" prefHeight="153.0" prefWidth="349.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
          <children>
@@ -35,7 +35,7 @@
                   <Font name="Futura Bold" size="18.0" />
                </font>
             </Label>
-            <JFXListView fx:id="listCategories" layoutX="14.0" layoutY="45.0" onMouseClicked="#clickListCategories" prefHeight="162.0" prefWidth="323.0" style="-fx-background-color: #F5F5F5;" />
+            <JFXListView fx:id="listCategories" layoutX="14.0" layoutY="45.0" prefHeight="162.0" prefWidth="323.0" style="-fx-background-color: #F5F5F5;" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="17.0" layoutY="76.0" prefHeight="222.0" prefWidth="349.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">

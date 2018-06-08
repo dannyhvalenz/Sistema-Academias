@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLHomeController">
    <children>
       <AnchorPane fx:id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" style="-fx-background-color: #f3f3f3;">
          <children>
@@ -21,7 +20,7 @@
                         <Font name="Futura Bold" size="22.0" />
                      </font>
                   </Label>
-                  <JFXButton fx:id="btnHamburger" contentDisplay="GRAPHIC_ONLY" layoutX="5.0" onAction="#clickHamburger" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK">
+                  <JFXButton fx:id="btnHamburger" contentDisplay="GRAPHIC_ONLY" layoutX="5.0" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0">
                            <image>
