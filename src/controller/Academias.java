@@ -25,8 +25,8 @@ public class Academias extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLInicioSesion.fxml"));
         stage.setTitle("Sistema de Academias");
-        Scene scene = new Scene(root);//new JFXDecorator(stage, root, false, false, true));
-        scene.getStylesheets().add(getClass().getResource("/resources/CSS/Styles.css").toExternalForm());
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/resources/Styles.css").toExternalForm());
         stage.setResizable(false);
         stage.sizeToScene();
         stage.setMaximized(true);
