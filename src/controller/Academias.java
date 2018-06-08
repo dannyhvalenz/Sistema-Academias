@@ -9,7 +9,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -24,15 +23,15 @@ public class Academias extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-    Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLInicioSesion.fxml"));
-    stage.setTitle("Sistema de Academias");
-    Scene scene = new Scene(root);
-    scene.getStylesheets().add(getClass().getResource("/view/Styles.css").toExternalForm());
-    stage.setResizable(false);
-    stage.sizeToScene();
-    stage.setMaximized(true);
-    stage.setScene(scene);
-    stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("/view/FXMLInicioSesion.fxml"));
+        stage.setTitle("Sistema de Academias");
+        Scene scene = new Scene(root);//new JFXDecorator(stage, root, false, false, true));
+        scene.getStylesheets().add(getClass().getResource("/resources/CSS/Styles.css").toExternalForm());
+        stage.setResizable(false);
+        stage.sizeToScene();
+        stage.setMaximized(true);
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**

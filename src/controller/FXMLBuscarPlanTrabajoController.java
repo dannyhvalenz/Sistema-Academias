@@ -11,6 +11,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import java.util.List;
+import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import model.pojos.PlanTrabajo;
+import model.dao.PlanTrabajoDAO;
 
 /**
  *
@@ -19,16 +28,31 @@ import javafx.scene.control.Label;
 public class FXMLBuscarPlanTrabajoController implements Initializable {
     
     @FXML
-    private Label label;
-    
+    private JFXButton btnHamburger;
+
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private JFXListView<?> listaPlanTrabajo;
+    
+    private List<PlanTrabajo> planTrabajo;
+
+    @FXML
+    void clickHamburger(ActionEvent event) {
+
+    }
+
+    @FXML
+    void clickListCategories(MouseEvent event) {
+
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cargarPlanTrabajo();
     }
+    
+  public void cargarPlanTrabajo() {
+    
+  }
+    
+
 }

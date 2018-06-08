@@ -20,6 +20,11 @@ public class Usuario {
 
   
   public Usuario() {}
+  
+  public Usuario(String username, String contrasena){
+    this.username = username;
+    this.contrasena = contrasena;
+  }
 
   public Usuario(Integer idUsuarioAcademico, String nombre, String apellidos, String correo, String telefono,
       String username, String contrasena, Integer idRol) {
