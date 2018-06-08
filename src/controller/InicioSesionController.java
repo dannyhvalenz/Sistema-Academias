@@ -24,36 +24,35 @@ import javafx.stage.Stage;
  * @version 1.1
  */
 public class InicioSesionController implements Initializable {
-  @FXML
-  private StackPane rootPane;
+    
+    @FXML
+    private StackPane rootPane;
+    @FXML
+    private JFXButton btnInicioSesion;
 
-  @FXML
-  private JFXTextField txtUsuario;
+    @FXML
+    private JFXTextField txtUsuario;
 
-  @FXML
-  private JFXPasswordField txtPassword;
+    @FXML
+    private JFXPasswordField txtPassword;
 
-  @FXML
-  private JFXButton btnInicioSesion;
-
-
-  @FXML
-  public void clickInicioSesion(ActionEvent event) {
-    try {
-      StackPane registroView;
-      registroView = FXMLLoader.load(getClass().getResource("/view/FXMLHome.fxml"));
-      Scene newScene = new Scene(registroView);
-      Stage curStage = (Stage) rootPane.getScene().getWindow();
-      curStage.setScene(newScene);
-      curStage.show();
-    } catch (IOException e) {
-      System.out.println("No se encontró: " + e);
+    @FXML
+    void clickInicioSesion(ActionEvent event) {
+        try {
+            StackPane registroView;
+            registroView = FXMLLoader.load(getClass().getResource("/view/FXMLHome.fxml"));
+            Scene newScene = new Scene(registroView);
+            Stage curStage = (Stage) rootPane.getScene().getWindow();
+            curStage.setScene(newScene);
+            curStage.show();
+        } catch (IOException e) {
+            System.out.println("No se encontró: " + e);
+        }
     }
-  }
 
-  @Override
-  public void initialize(URL url, ResourceBundle rb) {
-    // TODO
-  }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
 
 }
