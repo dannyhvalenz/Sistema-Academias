@@ -44,12 +44,6 @@ public class InicioSesionController implements Initializable {
   @FXML
   private JFXButton btnLogin;
 
-  @FXML
-  private JFXButton btnSignUp;
-
-  @FXML
-  private ImageView btnInfo;
-
   private Usuario usuario;
 
   private Usuario datosIngresados;

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controller.InicioSesionController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" style="-fx-background-color: #f3f3f3;">
          <children>
@@ -21,12 +21,12 @@
                   <DropShadow />
                </effect>
                <children>
-                  <JFXButton fx:id="btnInicioSesion" layoutX="82.0" layoutY="327.0" onAction="#clickInicioSesion" prefHeight="29.0" prefWidth="168.0" style="-fx-border-color: #fdc502; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar Sesion" textFill="WHITE">
+                  <JFXButton fx:id="btnLogin" layoutX="82.0" layoutY="327.0" onAction="#clickAcceder" prefHeight="29.0" prefWidth="168.0" style="-fx-border-color: #fdc502; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar Sesion" textFill="WHITE">
                      <font>
                         <Font name="Futura Medium" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXTextField fx:id="txtUsuario" focusColor="#fdc502" labelFloat="true" layoutX="20.0" layoutY="173.0" prefHeight="40.0" prefWidth="298.0" promptText="Usuario" style="-fx-prompt-text-fill: ffffff; -fx-text-fill: ffffff;">
+                  <JFXTextField fx:id="txtEmail" focusColor="#fdc502" labelFloat="true" layoutX="20.0" layoutY="173.0" prefHeight="40.0" prefWidth="298.0" promptText="Usuario" style="-fx-prompt-text-fill: ffffff; -fx-text-fill: ffffff;">
                      <font>
                         <Font name="Futura Medium" size="16.0" />
                      </font>

@@ -8,46 +8,52 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" style="-fx-background-color: #f3f3f3;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="controller.InicioSesionController">
    <children>
-      <AnchorPane layoutX="140.0" layoutY="159.0" prefHeight="397.0" prefWidth="331.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #fa5130, #dd2476);">
-         <effect>
-            <DropShadow />
-         </effect>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" style="-fx-background-color: #f3f3f3;">
          <children>
-            <JFXButton fx:id="btnSignIn" layoutX="82.0" layoutY="327.0" onAction="#clickInicioSesion" prefHeight="29.0" prefWidth="168.0" style="-fx-border-color: #fdc502; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar Sesion" textFill="WHITE">
+            <AnchorPane layoutX="140.0" layoutY="159.0" prefHeight="397.0" prefWidth="331.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #fa5130, #dd2476);">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <JFXButton fx:id="btnLogin" layoutX="82.0" layoutY="327.0" onAction="#clickAcceder" prefHeight="29.0" prefWidth="168.0" style="-fx-border-color: #fdc502; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar Sesion" textFill="WHITE">
+                     <font>
+                        <Font name="Futura Medium" size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXTextField fx:id="txtEmail" focusColor="#fdc502" labelFloat="true" layoutX="20.0" layoutY="173.0" prefHeight="40.0" prefWidth="298.0" promptText="Usuario" style="-fx-prompt-text-fill: ffffff; -fx-text-fill: ffffff;">
+                     <font>
+                        <Font name="Futura Medium" size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <ImageView fitHeight="129.0" fitWidth="130.0" layoutX="101.0" layoutY="14.0">
+                     <image>
+                        <Image url="@../resources/User.png" />
+                     </image>
+                  </ImageView>
+                  <JFXPasswordField fx:id="txtPassword" focusColor="#fdc502" labelFloat="true" layoutX="15.0" layoutY="249.0" prefHeight="40.0" prefWidth="298.0" promptText="Contraseña" style="-fx-prompt-text-fill: ffffff; -fx-text-fill: ffffff;">
+                     <font>
+                        <Font name="Futura Medium" size="16.0" />
+                     </font>
+                  </JFXPasswordField>
+               </children>
+            </AnchorPane>
+            <Label layoutX="543.0" layoutY="239.0" prefHeight="82.0" prefWidth="670.0" text="Sistema de Academias" textAlignment="CENTER" textFill="#686363">
                <font>
-                  <Font name="Futura Medium" size="16.0" />
+                  <Font name="Futura Bold" size="55.0" />
                </font>
-            </JFXButton>
-            <JFXTextField fx:id="txtUsuario" focusColor="#fdc502" labelFloat="true" layoutX="20.0" layoutY="173.0" prefHeight="40.0" prefWidth="298.0" promptText="Usuario" style="-fx-prompt-text-fill: ffffff; -fx-text-fill: ffffff;">
+            </Label>
+            <Label layoutX="589.0" layoutY="338.0" prefHeight="64.0" prefWidth="580.0" text="Universidad Veracruzana" textAlignment="CENTER" textFill="#686363">
                <font>
-                  <Font name="Futura Medium" size="16.0" />
+                  <Font name="Futura Medium" size="48.0" />
                </font>
-            </JFXTextField>
-            <ImageView fitHeight="129.0" fitWidth="130.0" layoutX="101.0" layoutY="14.0">
-               <image>
-                  <Image url="@../resources/User.png" />
-               </image>
-            </ImageView>
-            <JFXPasswordField fx:id="txtPassword" focusColor="#fdc502" labelFloat="true" layoutX="15.0" layoutY="249.0" prefHeight="40.0" prefWidth="298.0" promptText="Contraseña" style="-fx-prompt-text-fill: ffffff; -fx-text-fill: ffffff;">
-               <font>
-                  <Font name="Futura Medium" size="16.0" />
-               </font>
-            </JFXPasswordField>
+            </Label>
          </children>
       </AnchorPane>
-      <Label layoutX="543.0" layoutY="239.0" prefHeight="82.0" prefWidth="670.0" text="Sistema de Academias" textAlignment="CENTER" textFill="#686363">
-         <font>
-            <Font name="Futura Bold" size="55.0" />
-         </font>
-      </Label>
-      <Label layoutX="589.0" layoutY="338.0" prefHeight="64.0" prefWidth="580.0" text="Universidad Veracruzana" textAlignment="CENTER" textFill="#686363">
-         <font>
-            <Font name="Futura Medium" size="48.0" />
-         </font>
-      </Label>
    </children>
-</AnchorPane>
+</StackPane>
