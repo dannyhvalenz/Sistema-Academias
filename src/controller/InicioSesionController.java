@@ -34,7 +34,7 @@ public class InicioSesionController implements Initializable {
   private JFXPasswordField txtPassword;
 
   @FXML
-  private JFXButton btnLogin;
+  private JFXButton btnInicioSesion;
 
 
   @FXML

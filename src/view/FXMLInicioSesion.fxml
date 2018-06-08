@@ -17,7 +17,7 @@
             <DropShadow />
          </effect>
          <children>
-            <JFXButton fx:id="btnSignIn" layoutX="82.0" layoutY="327.0" onAction="#clickInicioSesion" prefHeight="29.0" prefWidth="168.0" style="-fx-border-color: #fdc502; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar Sesion" textFill="WHITE">
+            <JFXButton fx:id="btnInicioSesion" layoutX="82.0" layoutY="327.0" onAction="#clickInicioSesion" prefHeight="29.0" prefWidth="168.0" style="-fx-border-color: #fdc502; -fx-border-radius: 30; -fx-background-radius: 30;" text="Iniciar Sesion" textFill="WHITE">
                <font>
                   <Font name="Futura Medium" size="16.0" />
                </font>
