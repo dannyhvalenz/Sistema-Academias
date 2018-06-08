@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="117.0" prefWidth="580.0" style="-fx-background-color: ffffff; -fx-unfocus-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="107.0" fitWidth="188.0" layoutX="25.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/consultar.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="199.0" layoutY="22.0" text="Periodo:" textFill="#dd1e51">
+         <font>
+            <Font name="Futura Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="199.0" layoutY="51.0" text="Coordinador:" textFill="#dd1e51">
+         <font>
+            <Font name="Futura Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="199.0" layoutY="78.0" text="Fecha de aprobacion:" textFill="#dd1e51">
+         <font>
+            <Font name="Futura Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="265.0" layoutY="23.0" text="Periodo:" textFill="#17070b">
+         <font>
+            <Font name="Futura Medium" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="294.0" layoutY="51.0" text="Coordinador:" textFill="#17070b">
+         <font>
+            <Font name="Futura Medium" size="13.0" />
+         </font>
+      </Label>
+      <JFXDatePicker defaultColor="#dd1e51" layoutX="359.0" layoutY="71.0" promptText="dfsdf" />
+   </children>
+</AnchorPane>

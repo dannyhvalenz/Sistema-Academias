@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PlanTrabajo">
+    <select id="obtenerPlanTrabajo" resultType="model.pojos.PlanTrabajo" parameterType="Integer">
+        SELECT * FROM PlanTrabajo WHERE idAcademia = #{idAcademia)
+    </select>
+    
+    <select id="obtenerParticipantes" resultType="model.pojos.Maestro" parameterType="Integer">
+        SELECT u.idUsuario, u.nombre, u.apellidos
+        FROM asistencia pm
+        LEFT OUTER JOIN maestro m ON m.idUsuario = pm.idMaestro
+        LEFT OUTER JOIN usuario u ON u.idUsuario = m.idUsuario
+        WHERE pm.idPlanTrabajo = #{idPlanTrabajo}
+    </select>
+    
+    <select id="obtenerCursosDeMaestro" resultType="model.pojos.Curso" parameterType="Integer">
+        SELECT c.idCurso, c.NRC, c.programaEducativo, c.bloque, c.seccion, c.idExperienciaEducativa
+        FROM curso c
+        INNER JOIN periodocursomaestro pc ON pc.idCurso = c.idCurso
+        INNER JOIN maestro m ON m.idUsuario = pc.idMaestro
+        WHERE m.idUsuario = #{idMaestro}
+    </select>
+    
+    <select id="obtenerEvaluaciones" resultType="model.pojos.Evaluacion" parameterType="Integer">
+        SELECT * FROM evaluacion WHERE idEEPlanTrabajo = #{idEEPlanTrabajo}
+    </select>
+    
+    <select id="obtenerActividad" resultType="model.pojos.Actividad" parameterType="Integer">
+        SELECT * FROM actividad WHERE idObjetivoParticular = #{idObjetivoParticular}
+    </select>
+    
+    <select id="obtenerEEPlanTrabajo" resultType="model.pojos.EEPlanTrabajo" parameterType="Integer">
+        SELECT * FROM eeplantrabajo WHERE idPlanTrabajo = #{idPlanTrabajo}
+    </select>
+
+    <select id="obtenerTema" resultType="model.pojos.Tema" parameterType="Integer">
+        SELECT * FROM tema WHERE idEEPlanTrabajo = #{idEEPlanTrabajo}
+    </select>
+    
+    <select id="obtenerObjetivoParticular" resultType="model.pojos.ObjetivoParticular" parameterType="Integer">
+        SELECT * FROM objetivoparticular WHERE idPlanTrabajo = #{idPlanTrabajo}
+    </select>
+    
+    <select id="obtenerAsistencia" resultType="model.pojos.Asistencia" parameterType="Integer">
+        SELECT * FROM asistencia WHERE idPlanTrabajo = #{idPlanTrabajo}
+    </select>
+    
+    <insert id="guardarObjetivoParticular" parameterType="model.pojos.ObjetivoParticular">
+        INSERT INTO tema (descripcion, meta, idPlanTrabajo)
+        VALUES(#{descripcion},#{meta},#{idPlanTrabajo})
+    </insert>
+    
+    <insert id="guardarActividad" parameterType="model.pojos.Actividad">
+        INSERT INTO planeacion (descripcion, fecha, formaOperar, idObjetivoParticular)
+        VALUES(#{descripcion},#{fecha},#{formaOperar},#{idObjetivoParticular)})
+    </insert>
+    
+    <insert id="guardarEEPlanTrabajo" parameterType="model.pojos.EEPlanTrabajo">
+        INSERT INTO eeplantrabajo (nombre, herramientas, idPlanTrabajo)
+        VALUES(#{nombre},#{herramientas},#{idPlanTrabajo})
+    </insert>
+                                                                                                                                    
+    <insert id="guardarTema" parameterType="model.pojos.Tema">
+        INSERT INTO tema (primerParcial, segundoParcial, restoExamenes, idEEPlanTrabajo)
+        VALUES(#{primerParcial},#{segundoParcial},#{restoExamenes},#{idEEPlanTrabajo})
+    </insert>
+    
+    <insert id="guardarEvaluaciones" parameterType="model.pojos.Evaluacion">
+        INSERT INTO evaluacion_plancurso (criterio, porcentaje,idEEPlanTrabajo)
+        VALUES(#{criterio},#{porcentaje},#{idEEPlanTrabajo})
+    </insert>
+    
+    <insert id="guardarParticipante" parameterType="model.pojos.Asistencia">
+        INSERT INTO asistencia (idMaestro, idPlanTrabajo)
+        VALUES(#{idMaestro},#{idPlanTrabajo})
+    </insert>
+    
+    <insert id="guardarPlanTrabajo" parameterType="model.pojos.PlanTrabajo">
+        INSERT INTO PlanTrabajo (objetivoGeneral, programasEducativos, fechaAprobacion, idAcademia)
+        VALUES(#{objetivoGeneral},#{programasEducativos},#{fechaAprobacion},#{idAcademia})
+    </insert>
+</mapper>

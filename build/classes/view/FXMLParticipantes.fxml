@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="242.0" style="-fx-background-color: ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXCheckBox checkedColor="#ff334c" layoutX="14.0" layoutY="6.0" prefHeight="20.0" prefWidth="220.0" text="Daniela Hernandez Valenzuela">
+         <font>
+            <Font name="Futura Medium" size="13.0" />
+         </font>
+      </JFXCheckBox>
+      <Label layoutX="66.0" layoutY="26.0" text="Experiencia Educativa" textFill="#ff334c">
+         <font>
+            <Font name="Futura Medium" size="11.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

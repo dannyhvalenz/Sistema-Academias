@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Academia">
+    <select id="obtenerAcademias" resultType="model.pojos.Academia">
+        SELECT * FROM academia
+    </select>
+
+    <select id="obtenerAcademiaId" resultType="model.pojos.Academia" parameterType="Integer">
+        SELECT * FROM academia WHERE idAcademia = #{idAcademia}
+    </select>
+    
+    <select id="obtenerEE" resultType="model.pojos.EE" parameterType="Integer">
+        SELECT * FROM ee WHERE idAcademia = #{idAcademia}
+    </select>
+    
+    <select id="obtenerCursos" resultType="model.pojos.Curso" parameterType="Integer">
+        SELECT * FROM curso WHERE idEE = #{idEE}
+    </select>
+    
+    <select id="obtenerMaestros" resultType="model.pojos.Maestro" parameterType="Integer">
+        SELECT u.idUsuario, u.nombre, u.apellidos
+        FROM academia a
+        INNER JOIN ee e ON a.idAcademia = e.idAcademia
+        INNER JOIN curso c ON c.idEE = e.idEE
+        INNER JOIN periodocursomaestro p ON p.idCurso = c.idCurso
+        INNER JOIN maestro m ON m.idUsuario = pc.idMaestro
+        INNER JOIN usuario u ON u.idUsuario = m.idUsuario
+        WHERE a.idAcademia = #{idAcademia}
+    </select> 
+
+</mapper>
+

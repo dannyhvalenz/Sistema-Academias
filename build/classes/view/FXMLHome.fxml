@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="homePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0" style="-fx-background-color: #f3f3f3;">
+         <children>
+            <AnchorPane fx:id="barra" layoutX="-1.0" prefHeight="50.0" prefWidth="1252.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="74.0" layoutY="10.0" text="Sistema de Academias">
+                     <font>
+                        <Font name="Futura Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnHamburger" contentDisplay="GRAPHIC_ONLY" layoutX="5.0" onAction="#clickHamburger" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0">
+                           <image>
+                              <Image url="@../resources/Menu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label fx:id="lblNombreUsuario" layoutX="969.0" layoutY="12.0" prefHeight="29.0" prefWidth="270.0" text="Nombre Maestro" wrapText="true">
+                     <font>
+                        <Font name="Futura Medium" size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="iconoUsuario" fitHeight="40.0" fitWidth="40.0" layoutX="918.0" layoutY="7.0">
+                     <image>
+                        <Image url="@../resources/30%20User.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </AnchorPane>
+            <AnchorPane fx:id="generarPTPane" layoutX="136.0" layoutY="159.0" prefHeight="449.0" prefWidth="434.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label fx:id="lblGenerar" layoutX="43.0" layoutY="361.0" text="Generar Plan de Trabajo" textFill="#ff334c">
+                     <font>
+                        <Font name="Futura Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnGenerar" contentDisplay="GRAPHIC_ONLY" layoutX="30.0" layoutY="53.0" onAction="#clickGenerar" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK">
+                     <graphic>
+                        <ImageView fitHeight="266.0" fitWidth="349.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/generar.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="consultarPTPane" layoutX="670.0" layoutY="159.0" prefHeight="449.0" prefWidth="434.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label fx:id="lblConsultar" layoutX="41.0" layoutY="359.0" text="Consultar Plan de Trabajo" textFill="#ff334c">
+                     <font>
+                        <Font name="Futura Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnConsultar" contentDisplay="GRAPHIC_ONLY" layoutX="30.0" layoutY="53.0" onAction="#clickConsultar" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK">
+                     <graphic>
+                        <ImageView fitHeight="266.0" fitWidth="349.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/consultar.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
