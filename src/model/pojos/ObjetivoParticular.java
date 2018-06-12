@@ -2,109 +2,100 @@ package model.pojos;
 
 /**
  *
- * Clase principal para modelar las ObjetivoParticular con la Base de Datos
- * 
- * @author Daniela Hernandez Valenzuela
- * @since 04/06/2018
- * @version 1.0
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
 public class ObjetivoParticular {
-  private Integer idObjetivoParticular;
-  private String descripcion;
-  private String meta;
-  private Integer idPlanTrabajo;
-  
-/**
- * Constructor por defecto
- */  
-  public ObjetivoParticular() {}
+    private Integer idObjetivoParticular;
+    private String objetivo;
+    private String metas;
+    private Integer idPlanDeTrabajo;
+    
+    /**
+    * Constructor por defecto del objeto.
+    */
+    public ObjetivoParticular() {
+    }
+    
+    /**
+    *Constructor de la clase con todos sus atributos.
+    * @param idObjetivoParticular identificador del objeto
+    * @param objetivo el objetivo unico de la clase 
+    * @param metas las metas que se esperan alcanzar con el objetivo
+    * @param idPlanDeTrabajo identificador del plan de trabajo al que pertenece 
+    * el objetivoParticular.
+    */
+    public ObjetivoParticular(Integer idObjetivoParticular, String objetivo, String metas, Integer idPlanDeTrabajo) {
+        this.idObjetivoParticular = idObjetivoParticular;
+        this.objetivo = objetivo;
+        this.metas = metas;
+        this.idPlanDeTrabajo = idPlanDeTrabajo;
+    }
 
-/**
- * 
- * Constructor para los nuevos ObjetivoParticular generados
- * @param idObjetivoParticular Identificador del ObjetivoParticular
- * @param descripcion descripcion de la ObjetivoParticular
- * @param meta meta de la ObjetivoParticular 
- * @param idPlanTrabajo Identificador del PlanTrabajo
- */
-  public ObjetivoParticular(Integer idObjetivoParticular, String descripcion, String meta, 
-          Integer idPlanTrabajo) {
-    this.idObjetivoParticular = idObjetivoParticular;
-    this.descripcion = descripcion;
-    this.meta = meta;
-    this.idPlanTrabajo = idPlanTrabajo;
-  }
+    /**
+    *Retorna el identificador del objeto.
+    * @return idObjetivoParticular
+    */
+    public Integer getIdObjetivoParticular() {
+        return idObjetivoParticular;
+    }
 
-/**
- * 
- * Getter idObjetivoParticular de la ObjetivoParticular
- * @return Identificador de la ObjetivoParticular
- */  
-  public Integer getIdObjetivoParticular() {
-    return idObjetivoParticular;
-  }
+    /**
+    *Establece el identificador del objeto.
+    * @param idObjetivoParticular
+    */
+    public void setIdObjetivoParticular(Integer idObjetivoParticular) {
+        this.idObjetivoParticular = idObjetivoParticular;
+    }
 
-/**
- * 
- * Setter idObjetivoParticular de la ObjetivoParticular
- * @param idObjetivoParticular Identificador de la ObjetivoParticular
- */   
-  public void setIdObjetivoParticular(Integer idObjetivoParticular) {
-    this.idObjetivoParticular = idObjetivoParticular;
-  }
-  
-/**
- * 
- * Getter descripcion de la ObjetivoParticular
- * @return descripcion de la ObjetivoParticular
- */
-  public String getDescripcion() {
-    return descripcion;
-  }
+    /**
+    *Retorna el texto del objetivo del objetivo general.
+    * @return objetivo
+    */
+    public String getObjetivo() {
+        return objetivo;
+    }
 
-/**
- * 
- * Setter descripcion de la ObjetivoParticular
- * @param descripcion descripcion de la ObjetivoParticular
- */  
-  public void setDescripcion(String descripcion) {
-    this.descripcion = descripcion;
-  }
-  
-/**
- * 
- * Getter meta de la ObjetivoParticular
- * @return meta de la ObjetivoParticular
- */
-  public String getMeta() {
-    return meta;
-  }
+    /**
+    *Establece el texto del objetivo del objetivo general.
+    * @param objetivo
+    */
+    public void setObjetivo(String objetivo) {
+        this.objetivo = objetivo;
+    }
 
-/**
- * 
- * Setter meta de la ObjetivoParticular
- * @param meta meta de la ObjetivoParticular
- */  
-  public void setMeta(String meta) {
-    this.meta = meta;
-  }
-  
-/**
- * 
- * Getter idPlanDeTrabajo del PlanTrabajo
- * @return Identificador del Plan de trabajo
- */
-  public Integer getIdPlanTrabajo() {
-    return idPlanTrabajo;
-  }
+    /**
+    *Retorna el texto de las metas del objetivo general.
+    * @return metas
+    */
+    public String getMetas() {
+        return metas;
+    }
 
-/**
- * 
- * Setter idPlanTrabajo de la PlanTrabajo
- * @param idPlanTrabajo Identificador del PlanTrabajo
- */
-  public void setIdPlanTrabajo(Integer idPlanTrabajo) {
-    this.idPlanTrabajo = idPlanTrabajo;
-  }
+    /**
+    * Establece el texto de las metas del objetivo general.
+    * @param metas
+    */
+    public void setMetas(String metas) {
+        this.metas = metas;
+    }
 
+    /**
+    * Retorna el identificador del plan de trabajo al que pertenece el objetivo general.
+    * @return idPlanDeTrabajo
+    */
+    public Integer getIdPlanDeTrabajo() {
+        return idPlanDeTrabajo;
+    }
+
+    /**
+    * Establece el identificador del plan de trabajo al que pertenece el objetivo general.
+    * @param idPlanDeTrabajo
+    */
+    public void setIdPlanDeTrabajo(Integer idPlanDeTrabajo) {
+        this.idPlanDeTrabajo = idPlanDeTrabajo;
+    }
+    
+    
 }

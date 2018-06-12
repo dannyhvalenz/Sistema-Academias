@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dialog.BibliografiaDialogController">
+   <children>
+      <JFXTextField fx:id="txtAutor" labelFloat="true" layoutX="25.0" layoutY="32.0" prefHeight="31.0" prefWidth="300.0" promptText="Autor" />
+      <JFXTextField fx:id="txtTítulo" labelFloat="true" layoutX="25.0" layoutY="109.0" prefHeight="31.0" prefWidth="300.0" promptText="Título" />
+      <JFXTextField fx:id="txtEditorial" labelFloat="true" layoutX="25.0" layoutY="193.0" prefHeight="31.0" prefWidth="300.0" promptText="Editorial" />
+      <JFXTextField fx:id="txtYear" labelFloat="true" layoutX="25.0" layoutY="272.0" prefHeight="31.0" prefWidth="300.0" promptText="Año" />
+   </children>
+</AnchorPane>

@@ -2,11 +2,9 @@ package model.pojos;
 
 /**
  *
- * Clase principal para modelar los Cursos con la Base de Datos
- * 
- * @author Daniela Hernandez Valenzuela
- * @since 04/06/2018
- * @version 1.0
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
 public class Tema {
   private Integer idTema;
@@ -15,7 +13,16 @@ public class Tema {
   private String resto;
   private Integer idEEPlanDeTrabajo;
 
+  /**
+   * Constructor por defecto
+   */
   public Tema() {
+  }
+
+  public Tema(String primerParcial, String segundoParcial, String resto) {
+    this.primerParcial = primerParcial;
+    this.segundoParcial = segundoParcial;
+    this.resto = resto;
   }
 
   public Tema(Integer idTema, String primerParcial, String segundoParcial, String resto, Integer idEEPlanDeTrabajo) {

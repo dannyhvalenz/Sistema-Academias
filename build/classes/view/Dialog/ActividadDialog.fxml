@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dialog.ActividadDialogController">
+   <children>
+      <JFXTextField fx:id="txtFechas" labelFloat="true" layoutX="25.0" layoutY="160.0" prefHeight="31.0" prefWidth="300.0" promptText="Fechas / Semana" />
+      <JFXTextArea fx:id="txtFormaOperar" labelFloat="true" layoutX="25.0" layoutY="226.0" prefHeight="103.0" prefWidth="300.0" promptText="Forma de Operar" />
+      <JFXTextArea fx:id="txtAcciones" labelFloat="true" layoutX="25.0" layoutY="26.0" prefHeight="103.0" prefWidth="300.0" promptText="Actividad / Acciones" />
+   </children>
+</AnchorPane>

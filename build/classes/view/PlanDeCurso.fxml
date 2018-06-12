@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlanDeCursoController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" style="-fx-background-color: #EEEEEE;">
+         <children>
+            <AnchorPane fx:id="panelTopBar" prefHeight="76.0" prefWidth="1920.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #728EF9, #675DF9);">
+               <children>
+                  <JFXButton fx:id="btnHamburger" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="8.0" onAction="#clickHamburger" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" style="-fx-background-radius: 50;">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/ic_arrow_left_white_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label layoutX="84.0" layoutY="21.0" text="Plan de Curso" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cmbCurso" focusColor="#728ef9" layoutX="269.0" layoutY="15.0" prefHeight="50.0" prefWidth="330.0" promptText="Curso" style="-fx-prompt-text-fill: #FFFFFF; -fx-font-size: 23;" unFocusColor="#728ef9" visibleRowCount="5" />
+                  <JFXButton fx:id="btnEnviar" layoutX="1644.0" layoutY="7.0" onAction="#clickEnviar" prefHeight="60.0" prefWidth="199.0" ripplerFill="WHITE" style="-fx-background-radius: 50;" text="Enviar a Academia" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/ic_send_white_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnGuardar" layoutX="1438.0" layoutY="7.0" onAction="#clickGuardar" prefHeight="60.0" prefWidth="199.0" ripplerFill="WHITE" style="-fx-background-radius: 50;" text="Guardar Progreso" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/ic_progress_download_white_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="36.0" layoutY="137.0" prefHeight="515.0" prefWidth="1078.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" text="Planeación" textFill="#728ef9">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnMenosPlaneacion" layoutX="928.0" layoutY="11.0" onAction="#clickMenosPlaneacion" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #728EF9, #675DF9); -fx-background-radius: 50;" text="-" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnMasPlaneacion" layoutX="1002.0" layoutY="11.0" onAction="#clickMasPlaneacion" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #728EF9, #675DF9); -fx-background-radius: 50;" text="+" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <TableView fx:id="tablePlaneacion" editable="true" layoutX="17.0" layoutY="59.0" prefHeight="434.0" prefWidth="1045.0">
+                    <columns>
+                      <TableColumn fx:id="planeacionUnidad" prefWidth="100.0" text="Unidad" />
+                      <TableColumn fx:id="planeacionTemas" prefWidth="400.0" text="Temas" />
+                        <TableColumn fx:id="planeacionFechas" prefWidth="150.0" text="Fechas" />
+                        <TableColumn fx:id="planeacionTecnicas" prefWidth="395.0" text="Técnicas Didácticas" />
+                    </columns>
+                  </TableView>
+               </children>
+               <effect>
+                  <DropShadow color="#000000a1" />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="1141.0" layoutY="459.0" prefHeight="515.0" prefWidth="720.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" text="Bibliografía" textFill="#728ef9">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnMenosBibliografia" layoutX="564.0" layoutY="11.0" onAction="#clickMenosBibliografia" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #728EF9, #675DF9); -fx-background-radius: 50;" text="-" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnMasBibliografia" layoutX="638.0" layoutY="11.0" onAction="#clickMasBibliografia" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #728EF9, #675DF9); -fx-background-radius: 50;" text="+" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <TableView fx:id="tableBibliografia" layoutX="12.0" layoutY="56.0" prefHeight="445.0" prefWidth="696.0">
+                    <columns>
+                      <TableColumn fx:id="bibliografiaAutor" prefWidth="190.0" text="Autor(es)" />
+                      <TableColumn fx:id="bibliografiaTitulo" prefWidth="270.0" text="Título" />
+                        <TableColumn fx:id="bibliografiaEditorial" prefWidth="115.0" text="Editorial" />
+                        <TableColumn fx:id="biblioYear" prefWidth="120.0" text="Año" />
+                    </columns>
+                  </TableView>
+               </children>
+               <effect>
+                  <DropShadow color="#000000a1" />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="41.0" layoutY="668.0" prefHeight="311.0" prefWidth="1078.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" text="Calendario" textFill="#728ef9">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnMasCalendario" disable="true" layoutX="928.0" layoutY="11.0" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #728EF9, #675DF9); -fx-background-radius: 50;" text="-" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnMasCalendario" disable="true" layoutX="1002.0" layoutY="11.0" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #728EF9, #675DF9); -fx-background-radius: 50;" text="+" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <Label layoutX="169.0" layoutY="21.0" text="(Obtenido del Plan de Trabajo de la Academia)" textFill="#999999" />
+                  <TableView fx:id="tableCalendario" layoutX="9.0" layoutY="55.0" prefHeight="242.0" prefWidth="1060.0">
+                    <columns>
+                      <TableColumn fx:id="calendarioUnidad" editable="false" prefWidth="160.0" text="Unidad" />
+                      <TableColumn fx:id="calendarioFechas" prefWidth="250.0" text="Fechas" />
+                        <TableColumn fx:id="calendarioCriterio" prefWidth="400.0" text="Criterio de Evaluación" />
+                        <TableColumn fx:id="calendarioPorcentage" editable="false" prefWidth="250.0" text="Porcentage %" />
+                    </columns>
+                  </TableView>
+                  <JFXButton fx:id="btnEdit" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="854.0" layoutY="11.0" onAction="#clickEditCalendario" prefHeight="37.0" prefWidth="54.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #728EF9, #675DF9); -fx-background-radius: 50;" text="-" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/ic_pencil_white_36dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+               <effect>
+                  <DropShadow color="#000000a1" />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="1141.0" layoutY="137.0" prefHeight="298.0" prefWidth="719.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" text="Objetivo General" textFill="#728ef9">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <JFXTextArea fx:id="txtObjetivo" focusColor="WHITE" layoutX="17.0" layoutY="59.0" prefHeight="220.0" prefWidth="685.0" promptText="El estudiante ..." unFocusColor="WHITE" />
+               </children>
+               <effect>
+                  <DropShadow color="#000000a1" />
+               </effect>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -1,70 +1,133 @@
 package model.pojos;
 
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
- * Clase principal para modelar los Cursos con la Base de Datos
- * 
- * @author Daniela Hernandez Valenzuela
- * @since 04/06/2018
- * @version 1.0
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
 public class Actividad {
-  private Integer idActividad;
-  private String descripcion;
-  private String fecha;
-  private String formaOperar;
-  private Integer idObjetivoParticular;
+    private Integer idActividad;
+    private SimpleStringProperty accion = new SimpleStringProperty();
+    private SimpleStringProperty fecha = new SimpleStringProperty();
+    private SimpleStringProperty formaDeOperar = new SimpleStringProperty();
+    private Integer idObjetivoParticular;
 
-  public Actividad() {}
+    /**
+     * Constructor por defecto
+     */
+    public Actividad() {
+    }
 
-  public Actividad(Integer idActividad, String descripcion, String fecha, 
-          String formaOperar, Integer idObjetivoParticular) {
-    this.idActividad = idActividad;
-    this.descripcion = descripcion;
-    this.fecha = fecha;
-    this.formaOperar = formaOperar;
-    this.idObjetivoParticular = idObjetivoParticular;
-  }
+    /**
+     * Construcctor para crear la actividad
+     * @param accion
+     * @param fecha
+     * @param formaDeOperar 
+     */
+    public Actividad(String accion, String fecha, String formaDeOperar) {
+        this.accion = new SimpleStringProperty(accion);
+        this.fecha = new SimpleStringProperty(fecha);
+        this.formaDeOperar = new SimpleStringProperty(formaDeOperar);
+    }
 
-  public Integer getIdActividad() {
-    return idActividad;
-  }
+    /**
+     * Construcctor para crear la actividad en un determinado objetivo particular
+     * @param idActividad
+     * @param accion
+     * @param fecha
+     * @param formaDeOperar
+     * @param idObjetivoParticular 
+     */
+    public Actividad(Integer idActividad, String accion, String fecha, String formaDeOperar, Integer idObjetivoParticular) {
+        this.idActividad = idActividad;
+        this.accion = new SimpleStringProperty(accion);
+        this.fecha = new SimpleStringProperty(fecha);
+        this.formaDeOperar = new SimpleStringProperty(formaDeOperar);
+        this.idObjetivoParticular = idObjetivoParticular;
+    }
 
-  public void setIdActividad(Integer idActividad) {
-    this.idActividad = idActividad;
-  }
+    /**
+     * Getter id actividad
+     * @return idActividad
+     */
+    public Integer getIdActividad() {
+        return idActividad;
+    }
 
-  public String getDescripcion() {
-    return descripcion;
-  }
+    /**
+     * Setter idActividad
+     * @param idActividad 
+     */
+    public void setIdActividad(Integer idActividad) {
+        this.idActividad = idActividad;
+    }
 
-  public void setDescripcion(String descripcion) {
-    this.descripcion = descripcion;
-  }
+    /**
+     * Getter accion
+     * @return accion
+     */
+    public String getAccion() {
+        return accion.get();
+    }
 
-  public String getSegundoParcial() {
-    return fecha;
-  }
+    /**
+     * Setter de la accion
+     * @param accion 
+     */
+    public void setAccion(String accion) {
+        this.accion = new SimpleStringProperty(accion);
+    }
 
-  public void setFecha(String fecha) {
-    this.fecha = fecha;
-  }
+    /**
+     * Getter fecha de la actividad
+     * @return fecha
+     */
+    public String getFecha() {
+        return fecha.get();
+    }
 
-  public String getFormaOperar() {
-    return formaOperar;
-  }
+    /**
+     * setter de la fecha de la actividad
+     * @param fecha 
+     */
+    public void setFecha(String fecha) {
+        this.fecha = new SimpleStringProperty(fecha);
+    }
 
-  public void setFormaOperar(String formaOperar) {
-    this.formaOperar = formaOperar;
-  }
+    /**
+     * Getter forma de operar
+     * @return formaOperar
+     */
+    public String getFormaDeOperar() {
+        return formaDeOperar.get();
+    }
 
-  public Integer getIdObjetivoParticular() {
-    return idObjetivoParticular;
-  }
+    /**
+     * Setter de forma de operar
+     * @param formaDeOperar 
+     */
+    public void setFormaDeOperar(String formaDeOperar) {
+        this.formaDeOperar = new SimpleStringProperty(formaDeOperar);
+    }
 
-  public void setIdObjetivoParticular(Integer idObjetivoParticular) {
-    this.idObjetivoParticular = idObjetivoParticular;
-  }
+    /**
+     * Getter de idObjetivoParticular
+     * @return idObjetivoParticular
+     */
+    public Integer getIdObjetivoParticular() {
+        return idObjetivoParticular;
+    }
 
+    /**
+     * Setter de idObjetivoParticular
+     * @param idObjetivoParticular 
+     */
+    public void setIdObjetivoParticular(Integer idObjetivoParticular) {
+        this.idObjetivoParticular = idObjetivoParticular;
+    }
+    
+    
 }
-

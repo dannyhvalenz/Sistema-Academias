@@ -19,20 +19,18 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  * @version 1.0
  */
 public class MyBatisUtils {
-    public static String RESOURCE = "model/mybatis-config.xml";    
-    public static String ENVIRONMENT = "development";
-    public static SqlSession getSession(){
-        SqlSession session = null;
-        try{
-            Reader reader = Resources.
-                    getResourceAsReader(RESOURCE);
-            SqlSessionFactory sqlMapper = 
-                    new SqlSessionFactoryBuilder().
-                            build(reader,ENVIRONMENT);
-            session = sqlMapper.openSession();
-        }catch(IOException ex){
-            ex.printStackTrace();
-        }
-        return session;
+  public static String RESOURCE = "model/mybatis-config.xml";
+  public static String ENVIRONMENT = "development";
+
+  public static SqlSession getSession() {
+    SqlSession session = null;
+    try {
+      Reader reader = Resources.getResourceAsReader(RESOURCE);
+      SqlSessionFactory sqlMapper = new SqlSessionFactoryBuilder().build(reader, ENVIRONMENT);
+      session = sqlMapper.openSession();
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
+    return session;
+  }
 }

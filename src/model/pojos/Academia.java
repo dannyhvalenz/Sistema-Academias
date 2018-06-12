@@ -2,87 +2,79 @@ package model.pojos;
 
 /**
  *
- * Clase principal para modelar las Academias con la Base de Datos
- * 
- * @author Daniela Hernandez Valenzuela
- * @since 04/06/2018
- * @version 1.0
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
 public class Academia {
   private Integer idAcademia;
   private String nombre;
-  private String coordinador;
+  private Integer idCoordinador;
 
-  
-/**
- * Constructor por defecto
- */
+  /**
+    * Constructor por defecto de la clase
+    */
   public Academia() {
   }
 
-/**
- * 
- * Constructor para las nuevas Academias generadas
- * @param idAcademia Identificador de la Academia
- * @param nombre Nombre de la Academia
- * @param coordinador Nombre del coordinador de la Academia
-*/
-  public Academia(Integer idAcademia, String nombre, String coordinador) {
+  /**
+    * Constructor de la clase con todos sus atributos
+    * @param idAcademia identificador del objeto
+    * @param nombre nombre que tiene la academia
+    * @param idCoordinador coordinador de la academia
+    */
+  public Academia(Integer idAcademia, String nombre, Integer idCoordinador) {
     this.idAcademia = idAcademia;
     this.nombre = nombre;
-    this.coordinador = coordinador;
+    this.idCoordinador = idCoordinador;
   }
+
   /**
-   * Getter del idEE
-   * @return Identificador de la EE
-   */
+    * Retorna el identificador de la academia
+    * @return idAcademia
+    */
   public Integer getIdAcademia() {
     return idAcademia;
   }
 
-/**
- * 
- * Setter idAcademia de la academia
- * @param idAcademia Identificador de la academia
- */
+  /**
+    * Establece el identificador de la academia
+    * @param idAcademia
+    */
   public void setIdAcademia(Integer idAcademia) {
     this.idAcademia = idAcademia;
   }
 
-/**
- * 
- * Getter del nombre de la academia
- * @return Nombre de la academia
- */
+  /**
+    * Retorna el nombre de la academia
+    * @return nombre
+    */
   public String getNombre() {
     return nombre;
   }
 
-/**
- * 
- * Setter del nombre de la academia
- * @param nombre Nombre de la academia
- */
+  /**
+    * Establece el nombre de la academia
+    * @param nombre
+    */
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
 
-/**
- * 
- * Getter del coordinador de la academia
- * @return Coordinador de la academia
- */
-  public String getCoordinador() {
-    return coordinador;
+  /**
+    * Retorna el coordinador de la academia
+    * @return coordinador
+    */
+  public Integer getIdCoordinador() {
+    return idCoordinador;
   }
 
-/**
- * 
- * Setter del coordinador de la academia
- * @param coordinador Coordinador de la academia
- */
-  public void setCoordinador(String coordinador) {
-    this.coordinador = coordinador;
+  /**
+    * Establece el coordinador de la academia
+    * @param coordinador
+    */
+  public void setIdCoordinador(Integer idCoordinador) {
+    this.idCoordinador = idCoordinador;
   }
 
 }

@@ -7,11 +7,9 @@ package model.pojos;
 
 /**
  *
- * Clase principal para modelar los Cursos con la Base de Datos
- * 
- * @author Daniela Hernandez Valenzuela
- * @since 04/06/2018
- * @version 1.0
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
 public class Curso {
   private Integer idCurso;
@@ -21,19 +19,18 @@ public class Curso {
   private Integer seccion;
   private Integer idExperienciaEducativa;
 
-  
-/**
- * 
- * Constructor para los nuevos Cursos generados
- * @param idCurso Identificador del Curso
- * @param NRC NRC del Curso
- * @param programaEducativo Programa educativo del curso
- * @param bloque Bloque al que pertenece el curso
- * @param seccion Seccion a la que pertenece el curso
- * @param idExperienciaEducativa idExperienciaEducativa del la EE a la que pertenece el curso
-*/
-  public Curso(Integer idCurso, String NRC, String programaEducativo, 
-          Integer bloque, Integer seccion,Integer idExperienciaEducativa) {
+    /**
+    * Constructor de la clase con todos sus atributos
+    * @param idCurso identificador del objeto
+    * @param NRC codigo que se utiliza para identificar el curso
+    * @param programaEducativo programa educativo al que corresponde
+    * @param bloque semestre en el que se imparte el curso
+    * @param seccion el horario en donde se encuientra el curso
+    * @param idExperienciaEducativa identificador de la experiencia educativa 
+    * a la que está relacionada
+    */
+  public Curso(Integer idCurso, String NRC, String programaEducativo, Integer bloque, Integer seccion,
+      Integer idExperienciaEducativa) {
     this.idCurso = idCurso;
     this.NRC = NRC;
     this.programaEducativo = programaEducativo;
@@ -41,114 +38,105 @@ public class Curso {
     this.seccion = seccion;
     this.idExperienciaEducativa = idExperienciaEducativa;
   }
-/**
- * Constructor por defecto
- */
-  public Curso() {}
 
-/**
- * 
- * Getter idCurso del curso
- * @return Identificador del curso
- */
+    /**
+    * Constructor por default de la clase
+    */
+  public Curso() {
+  }
+
+    /**
+    * Retorna el identificador del curso
+    * @return idCurso
+    */
   public Integer getIdCurso() {
     return idCurso;
   }
 
-/**
- * 
- * Setter idCurso del curso
- * @param idCurso Identificador del curso
- */
+  /**
+    * Establece el identificador del curso
+    * @param idCurso
+    */
   public void setIdCurso(Integer idCurso) {
     this.idCurso = idCurso;
   }
-/**
- * 
- * Getter NRC del curso
- * @return NRC NRC del curso
- */
+
+  /**
+    * Retorna el NRC del curso
+    * @return NRC 
+    */
   public String getNRC() {
     return NRC;
   }
 
-/**
- * 
- * Getter NRC del curso
- * @param NRC NRC del curso
- */
+  /**
+    * Establece el NRC del curso
+    * @param NRC 
+    */
   public void setNRC(String NRC) {
     this.NRC = NRC;
   }
 
-/**
- * 
- * Getter programa educativo del curso
- * @return programa educativo del curso
- */
+  /**
+    * Retorna el programa educativo al que pertenece el curso
+    * @return programaEducativo
+    */
   public String getProgramaEducativo() {
     return programaEducativo;
   }
 
-/**
- * 
- * Setter programaEducativo del Curso
- * @param programaEducativo Programa Educativo del Curso
- */
+  /**
+    * Establece el programa educativo al que pertenece el curso
+    * @param programaEducativo
+    */
   public void setProgramaEducativo(String programaEducativo) {
     this.programaEducativo = programaEducativo;
   }
 
-/**
- * 
- * Getter Bloque del curso
- * @return Bloque del curso
- */
+  /**
+    * Retorna el bloque al que pertenece el curso
+    * @return bloque
+    */
   public Integer getBloque() {
     return bloque;
   }
-  
-/**
- * 
- * Setter Bloque del curso
- * @param bloque Bloque del curso
- */
+
+  /**
+    * Establece el bloque al que pertenece el curso
+    * @param bloque
+    */
   public void setBloque(Integer bloque) {
     this.bloque = bloque;
   }
-  
-/**
- * 
- * Getter seccion del curso
- * @return Seccion al que pertenece el Curso
- */
+
+  /**
+    * Retorna la seccion a la que pertenece el curso
+    * @param bloque
+    */
   public Integer getSeccion() {
     return seccion;
   }
-  
-/**
- * 
- * Setter idExperienciaEducativa de la academia
- * @param idExperienciaEducativa Identificador de la EE
- */
+
+  /**
+    * Establece la seccion a la que pertenece el curso
+    * @param seccion
+    */
   public void setSeccion(Integer seccion) {
     this.seccion = seccion;
   }
 
-/**
- * 
- * Getter idExperienciaEducativa de la EE
- * @return Identificador de la EE
- */
+  /**
+    * Retorna el identificador de la experiencia educativa a la que pertenece el curso
+    * @return idExperienciaEducativa
+    */
   public Integer getIdExperienciaEducativa() {
     return idExperienciaEducativa;
   }
 
-/**
- * 
- * Setter idExperienciaEducativa de la EE
- * @param idExperienciaEducativa Identificador de la EE
- */
+  /**
+    * Establece el identificador de la experiencia educativa a la que pertenece el curso
+    * @param idExperienciaEducativa
+    */
   public void setIdExperienciaEducativa(Integer idExperienciaEducativa) {
     this.idExperienciaEducativa = idExperienciaEducativa;
   }

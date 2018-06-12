@@ -1,24 +1,28 @@
 /**
  * DAO Para las consultas necesarias de la Academia
- * @author Daniel Escamilla Cortes y Jose Manuel Perez Verdejo
+ *
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
+
 package model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 import model.MyBatisUtils;
 import model.pojos.Academia;
-import model.pojos.EE;
+import model.pojos.ExperienciaEducativa;
 import model.pojos.Maestro;
-import model.pojos.PlanTrabajo;
+import model.pojos.Periodo;
 import org.apache.ibatis.session.SqlSession;
 
-public class AcademiaDAO {
+public class AcademiaDAO implements InterfaceAcademiaDAO {
     /**
      * Obtiene todas las Academias existentes
      * @return academias
      */
-    public static List<Academia> obtenerAcademias() {
+    public List<Academia> obtenerAcademias() {
         List<Academia> lista = new ArrayList<Academia>();
         SqlSession conn = null;
         try {
@@ -33,13 +37,29 @@ public class AcademiaDAO {
         }
         return lista;
     }
+    
+    public Academia obtenerCoordinacion(Integer idMaestro) {
+        Academia user = null;
+        SqlSession conn = null;
+        try {
+            conn = MyBatisUtils.getSession();
+            user = conn.selectOne("Academia.obtenerCoordinacion", idMaestro);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return user;
+    }
 
     /**
      * Obtiene una academia en especifico con base al id
      * @param idAcademia id de la academia a recuperar
      * @return academia
      */
-    public static Academia obtenerAcademiaId(Integer idAcademia) {//throws Exception{
+    public Academia obtenerAcademiaId(Integer idAcademia) {//throws Exception{
         Academia lista = null;
         SqlSession conn = null;
         try {
@@ -61,8 +81,8 @@ public class AcademiaDAO {
      * @param idAcademia id de la academia
      * @return experiencias educativas
      */
-    public static List<EE> obtenerExperienciasEducativas(Integer idAcademia) {
-        List<EE> lista = new ArrayList<EE>();
+    public List<ExperienciaEducativa> obtenerExperienciasEducativas(Integer idAcademia) {
+        List<ExperienciaEducativa> lista = new ArrayList<ExperienciaEducativa>();
         SqlSession conn = null;
         try {
             conn = MyBatisUtils.getSession();
@@ -78,35 +98,11 @@ public class AcademiaDAO {
     }
 
     /**
-     * Obtiene todas las PlanTrabajo de una academia
-     * @param academia
-     * @return PlanTrabajo
-     * @throws Exception si la consulta es incorrecta 
-     */
-    public static List<PlanTrabajo> obtenerPlanTrabajo(Academia academia) throws Exception{
-        List<PlanTrabajo> lista = new ArrayList<PlanTrabajo>();
-        SqlSession conn = null;
-        try {
-            conn = MyBatisUtils.getSession();
-            System.out.println("Holis");
-            lista = conn.selectList("Academia.obtenerPlanTrabajo", academia);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            throw ex;
-        } finally {
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return lista;
-    }
-
-    /**
      * Guarda la Academia
      * @param nombreAcademia
      * @return true si la consulta fue correcta
      */
-    public static boolean guardarAcademia(String nombreAcademia) {
+    public boolean guardarAcademia(String nombreAcademia) {
         SqlSession conn = null;
         try {
             conn = MyBatisUtils.getSession();
@@ -128,7 +124,7 @@ public class AcademiaDAO {
      * @param id de la academia a eliminar
      * @return true si la consulta fue correcta
      */
-    public static boolean eliminarAcademia(Integer id) {
+    public boolean eliminarAcademia(Integer id) {
         SqlSession conn = null;
         try {
             conn = MyBatisUtils.getSession();
@@ -149,9 +145,8 @@ public class AcademiaDAO {
      * Obtiene los maestros pertenecientes a una academia
      * @param idAcademia
      * @return maestros
-     * @throws Exception si la consulta es incorrecta 
      */
-    public static List<Maestro> obtenerMaestros(Integer idAcademia) throws Exception{
+    public List<Maestro> obtenerMaestros(Integer idAcademia){ //throws Exception{
         List<Maestro> lista = new ArrayList<Maestro>();
         SqlSession conn = null;
         try {

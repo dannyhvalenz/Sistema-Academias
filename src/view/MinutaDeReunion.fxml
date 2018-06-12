@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MinutaDeReunionController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" style="-fx-background-color: #EEEEEE;">
+         <children>
+            <AnchorPane fx:id="panelTopBar" prefHeight="76.0" prefWidth="1920.0" style="-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #D4218D, #873A94);">
+               <children>
+                  <JFXButton fx:id="btnHamburger" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="8.0" onAction="#clickHamburger" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" style="-fx-background-radius: 50;">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/ic_arrow_left_white_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label layoutX="84.0" layoutY="21.0" text="Minuta de Reunión" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cmbReunion" focusColor="#d4218d" layoutX="326.0" layoutY="14.0" prefHeight="50.0" prefWidth="330.0" promptText="Reuniones Registradas" style="-fx-prompt-text-fill: #FFFFFF; -fx-font-size: 23;" unFocusColor="#d4218d" visibleRowCount="5" />
+                  <JFXButton fx:id="btnEnviar" layoutX="1644.0" layoutY="7.0" onAction="#clickEnviar" prefHeight="60.0" prefWidth="199.0" ripplerFill="WHITE" style="-fx-background-radius: 50;" text="Enviar a Academia" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/ic_send_white_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnGuardar" disable="true" layoutX="1438.0" layoutY="7.0" onAction="#clickGuardar" prefHeight="60.0" prefWidth="199.0" ripplerFill="WHITE" style="-fx-background-radius: 50;" text="Guardar Progreso" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/ic_progress_download_white_24dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="55.0" layoutY="125.0" prefHeight="235.0" prefWidth="719.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" text="Objetivo de la Junta" textFill="#d4218d">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <JFXTextArea fx:id="txtObjetivo" focusColor="WHITE" layoutX="17.0" layoutY="59.0" prefHeight="129.0" prefWidth="685.0" promptText="El objetivo ..." unFocusColor="WHITE" />
+               </children>
+               <effect>
+                  <DropShadow color="#000000a1" />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="56.0" layoutY="662.0" prefHeight="233.0" prefWidth="719.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" text="Conclusiones y Acuerdos" textFill="#d4218d">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <JFXTextArea fx:id="txtConclusiones" focusColor="WHITE" layoutX="17.0" layoutY="59.0" prefHeight="161.0" prefWidth="685.0" promptText="Se logró ..." unFocusColor="WHITE" />
+               </children>
+               <effect>
+                  <DropShadow color="#000000a1" />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="55.0" layoutY="397.0" prefHeight="235.0" prefWidth="719.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="14.0" layoutY="10.0" text="Temas a  Tratar" textFill="#d4218d">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <JFXTextArea fx:id="txtTemas" focusColor="WHITE" layoutX="17.0" layoutY="59.0" prefHeight="167.0" prefWidth="685.0" promptText="Temas ..." unFocusColor="WHITE" />
+               </children>
+               <effect>
+                  <DropShadow color="#000000a1" />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="941.0" layoutY="125.0" prefHeight="770.0" prefWidth="876.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="17.0" layoutY="10.0" text="Participantes" textFill="#d4218d">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <JFXListView fx:id="listParticipantes" layoutX="18.0" layoutY="63.0" prefHeight="695.0" prefWidth="848.0" style="-fx-background-color: WHITE;" />
+               </children>
+               <effect>
+                  <DropShadow color="#000000a1" />
+               </effect>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="rootPane" prefHeight="728.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1250.0">
+         <children>
+            <AnchorPane fx:id="panelTopBar" prefHeight="76.0" prefWidth="1250.0" style="-fx-background-color: ffffff;">
+               <children>
+                  <JFXButton fx:id="btnHamburger" contentDisplay="GRAPHIC_ONLY" layoutX="14.0" layoutY="8.0" onAction="#clickHamburger" prefHeight="60.0" prefWidth="60.0" ripplerFill="WHITE" style="-fx-background-radius: 50;">
+                     <graphic>
+                        <ImageView fitHeight="56.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Menu.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Label layoutX="84.0" layoutY="21.0" text="Academia">
+                     <font>
+                        <Font name="Futura Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblAcademia" layoutX="237.0" layoutY="26.0" text="Desarrollo de Software">
+                     <font>
+                        <Font name="Futura Medium" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblnombreMaestro" layoutX="972.0" layoutY="23.0" prefHeight="28.0" prefWidth="262.0" text="Manolo Perez">
+                     <font>
+                        <Font name="Futura Medium" size="21.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="1440.0" layoutY="132.0" />
+            <AnchorPane layoutX="387.0" layoutY="162.0" prefHeight="449.0" prefWidth="434.0" style="-fx-background-color: WHITE; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="68.0" layoutY="356.0" text="Plan de Trabajo" textFill="#ff334c">
+                     <font>
+                        <Font name="Futura Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnGenerar" contentDisplay="GRAPHIC_ONLY" layoutX="30.0" layoutY="53.0" onAction="#clickGenerar" prefHeight="40.0" prefWidth="40.0" ripplerFill="BLACK">
+                     <graphic>
+                        <ImageView fitHeight="266.0" fitWidth="349.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/generar.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

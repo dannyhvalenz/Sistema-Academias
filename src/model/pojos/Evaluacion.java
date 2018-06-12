@@ -1,59 +1,106 @@
 package model.pojos;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
- * Clase principal para modelar los Evaluacion con la Base de Datos
- * 
- * @author Daniela Hernandez Valenzuela
- * @since 04/06/2018
- * @version 1.0
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
 public class Evaluacion {
   private Integer idEvaluacion;
-  private String criterio;
-  private String porcentaje;
-  private Integer idPlanDeTrabajo;
+  private SimpleIntegerProperty porcentaje = new SimpleIntegerProperty();
+  private SimpleStringProperty instrumento = new SimpleStringProperty();
+  private Integer idEEPlanTrabajo;
 
+  /**
+    * Constructor por default de la clase
+    */
   public Evaluacion() {
   }
 
-  public Evaluacion(Integer idEvaluacion, String criterio, String porcentaje, 
-      Integer idPlanDeTrabajo) {
-    this.idEvaluacion = idEvaluacion;
-    this.criterio = criterio;
-    this.porcentaje = porcentaje;
-    this.idPlanDeTrabajo = idPlanDeTrabajo;
-  }
+  public Evaluacion(Integer porcentaje, String instrumento) {
+    this.porcentaje = new SimpleIntegerProperty(porcentaje);
+    this.instrumento = new SimpleStringProperty(instrumento);
+}
 
-  public Integer getIdEvaluacion() {
-    return idEvaluacion;
-  }
+  /**
+    * Constructor de la clase con todos sus atributos
+    * @param idEvaluacion identificador del objeto
+    * @param porcentaje el valor de la evaluacion
+    * @param instrumento el instrumento que se utiliza para la evaluacion
+    * @param idPlanDeTrabajo identificador del plan de trabajo al que esta asociada la evaluacion
+    */
+    public Evaluacion(Integer idEvaluacion, Integer porcentaje, String instrumento, Integer idPlanDeTrabajo) {
+        this.idEvaluacion = idEvaluacion;
+        this.porcentaje = new SimpleIntegerProperty(porcentaje);
+        this.instrumento = new SimpleStringProperty(instrumento);
+        this.idEEPlanTrabajo = idPlanDeTrabajo;
+    }
 
-  public void setIdEvaluacion(Integer idEvaluacion) {
-    this.idEvaluacion = idEvaluacion;
-  }
+    /**
+    * Getter del identificador de la evaluacion
+    * @return idEvaluacion
+    */
+    public Integer getIdEvaluacion() {
+        return idEvaluacion;
+    }
 
-  public String getCriterio() {
-    return criterio;
-  }
+    /**
+    * Setter del identificador de la evaluacion
+    * @param idEvaluacion
+    */
+    public void setIdEvaluacion(Integer idEvaluacion) {
+        this.idEvaluacion = idEvaluacion;
+    }
 
-  public void setCriterio(String criterio) {
-    this.criterio = criterio;
-  }
+    /**
+    * Getter del porcentaje de la evaluacion
+    * @return porcentaje
+    */
+    public Integer getPorcentaje() {
+        return porcentaje.get();
+    }
 
-  public String getPorcentaje() {
-    return porcentaje;
-  }
+    /**
+    * Setter del porcentaje de la evaluacion
+    * @param porcentaje
+    */
+    public void setPorcentaje(Integer porcentaje) {
+        this.porcentaje = new SimpleIntegerProperty(porcentaje);
+    }
 
-  public void setPorcentaje(String porcentaje) {
-    this.porcentaje = porcentaje;
-  }
+    /**
+    * Getter del instrumento de  evaluacion
+    * @return instrumento
+    */
+    public String getInstrumento() {
+        return instrumento.get();
+    }
 
-  public Integer getIdPlanDeTrabajo() {
-    return idPlanDeTrabajo;
-  }
+    /**
+    * Setter del instrumento de  evaluacion
+    * @param instrumento
+    */
+    public void setInstrumento(String instrumento) {
+        this.instrumento = new SimpleStringProperty(instrumento);
+    }
 
-  public void setIdPlanDeTrabajo(Integer idPlanDeTrabajo) {
-    this.idPlanDeTrabajo = idPlanDeTrabajo;
-  }
+    /**
+     * Getter del idEEPlanTrabajo
+     * @return 
+     */
+    public Integer getIdEEPlanTrabajo() {
+        return idEEPlanTrabajo;
+    }
+
+    /**
+     * Setter del idEEPlanTrabajo
+     * @param idEEPlanTrabajo 
+     */
+    public void setIdEEPlanTrabajo(Integer idEEPlanTrabajo) {
+        this.idEEPlanTrabajo = idEEPlanTrabajo;
+    }
 }

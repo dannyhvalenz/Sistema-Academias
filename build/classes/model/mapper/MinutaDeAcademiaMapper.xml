@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MinutaDeAcademia">
+    <select id="obtenerMinuta" resultType="model.pojos.MinutaDeAcademia" parameterType="Integer">
+        SELECT * FROM minutadeacademia WHERE idReunion = #{idReunion}
+    </select>
+    
+    <select id="obtenerParticipantes" resultType="model.pojos.Maestro" parameterType="Integer">
+        SELECT u.idUsuarioAcademico, u.nombre, u.apellidos
+        FROM participantes_minuta pm
+        LEFT OUTER JOIN maestro m ON m.idUsuarioAcademico = pm.idMaestro
+        LEFT OUTER JOIN usuarioacademico u ON u.idUsuarioAcademico = m.idUsuarioAcademico
+        WHERE pm.idMinutaDeAcademia = #{idMinutaDeAcademia}
+    </select>
+    
+    <insert id="guardarParticipante" parameterType="model.pojos.Participante">
+        INSERT INTO participante_minuta (idMaestro, idMinutaDeAcademia)
+        VALUES(#{idMaestro},#{idDocumento})
+    </insert>
+    
+    <insert id="guardarMinuta" parameterType="model.pojos.MinutaDeAcademia">
+        INSERT INTO minutadeacademia (idReunion,fecha,hora,objetivo,temas,conclusiones)
+        VALUES(#{idReunion},#{fecha},#{hora},#{objetivo},#{temas},#{conclusiones})
+    </insert>
+</mapper>
+

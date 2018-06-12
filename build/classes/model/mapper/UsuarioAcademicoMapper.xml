@@ -3,13 +3,13 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Usuario">
-    <select id="obtenerUsuarios" resultType="model.pojos.Usuario" parameterType="model.pojos.Usuario">
-        SELECT * FROM Usuario
+<mapper namespace="UsuarioAcademico">
+    <select id="obtenerUsuarios" resultType="model.pojos.UsuarioAcademico" parameterType="model.pojos.UsuarioAcademico">
+        SELECT * FROM UsuarioAcademico
     </select>
     
-    <select id="login" resultType="model.pojos.Usuario" parameterType="model.pojos.Usuario">
-        SELECT * FROM Usuario WHERE username = #{username} AND contrasena = #{contrasena} 
+    <select id="login" resultType="model.pojos.UsuarioAcademico" parameterType="model.pojos.UsuarioAcademico">
+        SELECT * FROM UsuarioAcademico WHERE username = #{username} AND contrasena = #{contrasena} 
     </select>
     
 </mapper>

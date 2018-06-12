@@ -8,28 +8,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM academia
     </select>
 
+    <select id="obtenerCoordinacion" resultType="model.pojos.Academia" parameterType="Integer">
+        SELECT * FROM academia WHERE idCoordinador = #{idCoordinador}
+    </select>
+
     <select id="obtenerAcademiaId" resultType="model.pojos.Academia" parameterType="Integer">
         SELECT * FROM academia WHERE idAcademia = #{idAcademia}
     </select>
     
-    <select id="obtenerEE" resultType="model.pojos.EE" parameterType="Integer">
-        SELECT * FROM ee WHERE idAcademia = #{idAcademia}
+    <select id="obtenerExperienciasEducativas" resultType="model.pojos.ExperienciaEducativa" parameterType="Integer">
+        SELECT * FROM experienciaeducativa WHERE idAcademia = #{idAcademia}
     </select>
     
-    <select id="obtenerCursos" resultType="model.pojos.Curso" parameterType="Integer">
-        SELECT * FROM curso WHERE idEE = #{idEE}
+    <select id="obtenerReuniones" resultType="model.pojos.Reunion" parameterType="model.pojos.Academia">
+        SELECT * FROM reunion WHERE idAcademia = #{idAcademia}
     </select>
+    
+    <insert id="guardarAcademia" parameterType="String">
+        INSERT INTO academia (nombre)
+        VALUES(#{nombre})
+    </insert>
+    
+    <delete id="eliminarAcademia" parameterType="Integer">
+        DELETE FROM academia WHERE idAcademia = #{idAcademia}
+    </delete>
     
     <select id="obtenerMaestros" resultType="model.pojos.Maestro" parameterType="Integer">
-        SELECT u.idUsuario, u.nombre, u.apellidos
+        SELECT u.idUsuarioAcademico, u.nombre, u.apellidos
         FROM academia a
-        INNER JOIN ee e ON a.idAcademia = e.idAcademia
-        INNER JOIN curso c ON c.idEE = e.idEE
-        INNER JOIN periodocursomaestro p ON p.idCurso = c.idCurso
-        INNER JOIN maestro m ON m.idUsuario = pc.idMaestro
-        INNER JOIN usuario u ON u.idUsuario = m.idUsuario
+        INNER JOIN experienciaeducativa e ON a.idAcademia = e.idAcademia
+        INNER JOIN curso c ON c.idExperienciaEducativa = e.idExperienciaEducativa
+        INNER JOIN periodoc pc ON pc.idCurso = c.idCurso
+        INNER JOIN maestro m ON m.idUsuarioAcademico = pc.idMaestro
+        INNER JOIN usuarioacademico u ON u.idUsuarioAcademico = m.idUsuarioAcademico
         WHERE a.idAcademia = #{idAcademia}
     </select> 
-
 </mapper>
 

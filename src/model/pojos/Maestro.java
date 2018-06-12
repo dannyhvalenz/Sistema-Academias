@@ -2,46 +2,77 @@ package model.pojos;
 
 /**
  *
- * Clase principal para modelar los Cursos con la Base de Datos
- * 
- * @author Daniela Hernandez Valenzuela
- * @since 04/06/2018
- * @version 1.0
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
 public class Maestro {
-  private Integer idUsuario;
+  private Integer idUsuarioAcademico;
   private String nombre;
   private String apellidos;
 
+  /**
+    * Constructor por default de la clase. 
+    */
   public Maestro() {
   }
 
-    public Maestro(Integer idUsuario, String nombre, String apellidos) {
-        this.idUsuario = idUsuario;
+  /**
+    * Constructor de la clase con todos sus atributos.
+    * @param idUsuarioAcademico identificador del objeto
+    * @param nombre el nombre que lleva el maestro
+    * @param apellidos los apellidos (paterno y materno) del maestro
+    */
+    public Maestro(Integer idUsuarioAcademico, String nombre, String apellidos) {
+        this.idUsuarioAcademico = idUsuarioAcademico;
         this.nombre = nombre;
         this.apellidos = apellidos;
     }
 
+    /**
+    * Retorna el identificador del maestro.
+    * @return idUsuarioAcademico
+    */
     public Integer getIdUsuarioAcademico() {
-        return idUsuario;
+        return idUsuarioAcademico;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    /**
+    * Establece el identificador del maestro.
+    * @param idUsuarioAcademico
+    */
+    public void setIdUsuarioAcademico(Integer idUsuarioAcademico) {
+        this.idUsuarioAcademico = idUsuarioAcademico;
     }
 
+    /**
+    * Retorna el nombre del maestro.
+    * @return nombre
+    */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+    * Establece el nombre del maestro.
+    * @param nombre
+    */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+    * Retorna los apellidos del maestro.
+    * @return apellidos
+    */
     public String getApellidos() {
         return apellidos;
     }
 
+    /**
+    * Establece los apellidos del maestro.
+    * @param apellidos
+    */
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }

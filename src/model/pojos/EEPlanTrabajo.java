@@ -2,109 +2,98 @@ package model.pojos;
 
 /**
  *
- * Clase principal para modelar las EEPlanTrabajo con la Base de Datos
- * 
- * @author Daniela Hernandez Valenzuela
- * @since 04/06/2018
- * @version 1.0
+ * @author Daniela Hernandez
+ * @since Jun 05, 2018
+ * @version 1.1
  */
 public class EEPlanTrabajo {
   private Integer idEEPlanTrabajo;
   private String nombre;
   private String herramientas;
-  private Integer idPlanTrabajo;
-  
-/**
- * Constructor por defecto
- */  
-  public EEPlanTrabajo() {}
+  private Integer idPlanDeTrabajo;
 
-/**
- * 
- * Constructor para los nuevos EEPlanTrabajo generados
- * @param idEEPlanTrabajo Identificador del EEPlanTrabajo
- * @param nombre nombre de la EEPlanTrabajo
- * @param herramientas herramientas de la EEPlanTrabajo 
- * @param idPlanTrabajo Identificador del PlanTrabajo
- */
-  public EEPlanTrabajo(Integer idEEPlanTrabajo, String nombre, String herramientas, 
-          Integer idPlanTrabajo) {
+  /**
+    * Constructor por default de la clase
+    */
+  public EEPlanTrabajo() {
+  }
+
+  /**
+    * Constructor de la clase con todos sus atributos
+    * @param idEEPlanTrabajo identificador del objeto
+    * @param nombre nombre que se le da al documento
+    * @param herramientas las herramientas que se utilizan en el documento
+    * @param idPlanTrabajo identificador del plan de trabajo con el que está asociado
+    */
+  public EEPlanTrabajo(Integer idEEPlanTrabajo, String nombre, String herramientas, Integer idPlanDeTrabajo) {
     this.idEEPlanTrabajo = idEEPlanTrabajo;
     this.nombre = nombre;
     this.herramientas = herramientas;
-    this.idPlanTrabajo = idPlanTrabajo;
+    this.idPlanDeTrabajo = idPlanDeTrabajo;
   }
 
-/**
- * 
- * Getter idEEPlanTrabajo de la EEPlanTrabajo
- * @return Identificador de la EEPlanTrabajo
- */  
+  /**
+    * Retorna el identificador del eeplan de trabajo 
+    * @return idEEPlanTrabajo
+    */
   public Integer getIdEEPlanTrabajo() {
     return idEEPlanTrabajo;
   }
 
-/**
- * 
- * Setter idEEPlanTrabajo de la EEPlanTrabajo
- * @param idEEPlanTrabajo Identificador de la EEPlanTrabajo
- */   
+  /**
+    * Establece el identificador del eeplan de trabajo 
+    * @param idEEPlanTrabajo
+    */
   public void setIdEEPlanTrabajo(Integer idEEPlanTrabajo) {
     this.idEEPlanTrabajo = idEEPlanTrabajo;
   }
-  
-/**
- * 
- * Getter nombre de la EEPlanTrabajo
- * @return nombre de la EEPlanTrabajo
- */
+
+  /**
+    * Retorna el nombre dado al eeplan de trabajo 
+    * @return nombre
+    */
   public String getNombre() {
     return nombre;
   }
 
-/**
- * 
- * Setter nombre de la EEPlanTrabajo
- * @param nombre nombre de la EEPlanTrabajo
- */  
+  /**
+    * Establece el nombre dado al eeplan de trabajo 
+    * @param nombre
+    */
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
-  
-/**
- * 
- * Getter herramientas de la EEPlanTrabajo
- * @return herramientas de la EEPlanTrabajo
- */
+
+  /**
+    * Retorna las herramientas que utiliza el eeplan de trabajo 
+    * @return herramientas
+    */
   public String getHerramientas() {
     return herramientas;
   }
 
-/**
- * 
- * Setter herramientas de la EEPlanTrabajo
- * @param herramientas herramientas de la EEPlanTrabajo
- */  
+  /**
+    * Establece las herramientas que utiliza el eeplan de trabajo 
+    * @param herramientas
+    */
   public void setHerramientas(String herramientas) {
     this.herramientas = herramientas;
   }
-  
-/**
- * 
- * Getter idPlanDeTrabajo del PlanTrabajo
- * @return Identificador del Plan de trabajo
- */
-  public Integer getIdPlanTrabajo() {
-    return idPlanTrabajo;
+
+  /**
+    * Retorna el identificador del plan de trabajo que se asocia con el objeto
+    * @return idPlanDeTrabajo
+    */
+  public Integer getIdPlanDeTrabajo() {
+    return idPlanDeTrabajo;
   }
 
-/**
- * 
- * Setter idPlanTrabajo de la PlanTrabajo
- * @param idPlanTrabajo Identificador del PlanTrabajo
- */
-  public void setIdPlanTrabajo(Integer idPlanTrabajo) {
-    this.idPlanTrabajo = idPlanTrabajo;
+    /**
+    * Establece el identificador del plan de trabajo que se asocia con el objeto
+    * @param idPlanDeTrabajo
+    */
+  public void setIdPlanDeTrabajo(Integer idPlanDeTrabajo) {
+    this.idPlanDeTrabajo = idPlanDeTrabajo;
   }
 
 }
