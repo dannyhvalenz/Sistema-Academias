@@ -233,12 +233,12 @@ public class PlanDeTrabajoDAO {
      * @param idPlanDeCurso id del plan de curso
      * @return planeaciones
      */
-    public List<Evaluacion> obtenerEvaluaciones(Integer idPlanDeCurso) {
+    public List<Evaluacion> obtenerEvaluaciones(Integer idPlanDeTrabajo) {
         List<Evaluacion> lista = new ArrayList<Evaluacion>();
         SqlSession conn = null;
         try {
             conn = MyBatisUtils.getSession();
-            lista = conn.selectList("PlanDeTrabajo.obtenerEvaluaciones", idPlanDeCurso);
+            lista = conn.selectList("PlanDeTrabajo.obtenerEvaluaciones", idPlanDeTrabajo);
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
@@ -254,12 +254,12 @@ public class PlanDeTrabajoDAO {
      * @param idPlanDeCurso id del plan de curso
      * @return planeaciones
      */
-    public List<Tema> obtenerTemas(Integer idPlanDeCurso) {
-        List<Tema> lista = new ArrayList<Tema>();
+    public Tema obtenerTemaDeEEPlanTrabajo(Integer idEEPlanDeTrabajo) {
+        Tema tema = new Tema();
         SqlSession conn = null;
         try {
             conn = MyBatisUtils.getSession();
-            lista = conn.selectList("PlanDeTrabajo.obtenerTemas", idPlanDeCurso);
+            tema = conn.selectOne("PlanDeTrabajo.obtenerTemaDeEEPlanTrabajo", idEEPlanDeTrabajo);
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
@@ -267,7 +267,7 @@ public class PlanDeTrabajoDAO {
                 conn.close();
             }
         }
-        return lista;
+        return tema;
     }
     
     /**

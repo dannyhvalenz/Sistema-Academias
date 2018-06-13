@@ -71,9 +71,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM tema WHERE idEEPlanTrabajo = #{idEEPlanTrabajo}
     </select>
     
+    <select id="obtenerTemaDeEEPlanTrabajo" resultType="model.pojos.Tema" parameterType="Integer">
+        SELECT idTema, primerParcial,segundoParcial, resto
+        FROM tema 
+        WHERE idEEPlanTrabajo = #{idEEPlanTrabajo}
+    </select>
+    
     <select id="obtenerParticipantes" resultType="model.pojos.Maestro" parameterType="Integer">
         SELECT u.idUsuarioAcademico, u.nombre, u.apellidos
-        FROM participantes_plantrabajo ppt
+        FROM participante_plantrabajo ppt
         LEFT OUTER JOIN maestro m ON m.idUsuarioAcademico = ppt.idMaestro
         LEFT OUTER JOIN usuarioacademico u ON u.idUsuarioAcademico = m.idUsuarioAcademico
         WHERE ppt.idPlanDeTrabajo = #{idPlanDeTrabajo}

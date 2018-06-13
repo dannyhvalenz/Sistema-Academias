@@ -140,12 +140,14 @@ public class PlanDeTrabajoController implements Initializable {
         if(plan.obteneridPlanTrabajo() != null ){
             existe = true;
             mensaje("Existe plan de trabajo", "Hay un plan de trabajo guardado en la Base de Datos");
+            System.out.println("----------------------------Plan de Trabajo----------------------------");
             //PLANDETRABAJO
             Integer idPlanDeTrabajo = plan.obteneridPlanTrabajo();
             System.out.println("ID del Plan de Trabajo existente: " + idPlanDeTrabajo);
             plandetrabajo = plan.obtenerPlanDeTrabajoEspecifico(idPlanDeTrabajo);
             txtObjetivoGeneral.setText(plandetrabajo.getObjetivoGeneral());
             //OBJETIVOPARTICULAR
+            System.out.println("----------------------------Objetivo particular----------------------------");
             ObjetivoParticular objetivoParticular = new ObjetivoParticular();
             //Integer idObjetivoParticular = plan.obteneridObjetivoParticular();
             objetivoParticular = plan.obtenerObjetivoParticularEspecifico(idPlanDeTrabajo);
@@ -161,22 +163,29 @@ public class PlanDeTrabajoController implements Initializable {
 //                listaActividades.add(act);
             }
 //            inicializarTablaActividad();
+            
             //EEPLANDETRABAJO
+            System.out.println("----------------------------EEPlanDeTrabajo----------------------------");
             List<EEPlanTrabajo> experiencias = plan.obtenerEEPlanDeTrabajo(idPlanDeTrabajo);
             for(EEPlanTrabajo ee : experiencias){
-                System.out.println("ID EEPlanDeTrabajo: " + ee.getIdEEPlanTrabajo());
+                Integer IdEEPlanTrabajo = ee.getIdEEPlanTrabajo();
+                System.out.println("ID EEPlanDeTrabajo: " + IdEEPlanTrabajo);
+                //RECUPERAR TEMA
+                Tema tema = plan.obtenerTemaDeEEPlanTrabajo(IdEEPlanTrabajo);
+                System.out.println("ID Tema: " + tema.getIdTema());
+                //RECUPERAR EVALUACION
+                List<Evaluacion> evaluaciones = plan.obtenerEvaluaciones(IdEEPlanTrabajo);
+                for(Evaluacion eval : evaluaciones){
+                    System.out.println("ID Evaluacion: " + eval.getIdEvaluacion());
+                }
             }  
-//           
-//            
-            //TEMA
-            
-            //EVALUACION
-            
             //PARTICIPANTES
-//            List<Maestro> maestros = plan.obtenerParticipantes(idPlanDeTrabajo);
-//            for(Maestro participante : maestros){
+            System.out.println("----------------------------Participantes----------------------------");
+            List<Maestro> maestros = plan.obtenerParticipantes(idPlanDeTrabajo);
+            for(Maestro participante : maestros){
+                System.out.println("ID Maestro participante: " + participante.getIdUsuarioAcademico());
 //                //ObservableList<AnchorPane>
-//            }
+            }
 ////            ObservableList<AnchorPane> listaParticipantes = listParticipantes.getItems();
 //            int contador = 0;
 //            for (AnchorPane part : listaParticipantes) {
