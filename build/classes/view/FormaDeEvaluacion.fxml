@@ -41,7 +41,7 @@
                 <TableColumn fx:id="evaluacionPorcentaje" minWidth="0.0" prefWidth="106.0" text="Porcentaje %" />
               </columns>
             </TableView>
-            <JFXTextArea fx:id="txtHerramientas" accessibleText="Primer Parcial" focusColor="#ff334c" labelFloat="true" layoutX="465.0" layoutY="150.0" prefHeight="60.0" prefWidth="160.0" promptText="Herramientas" unFocusColor="#999999">
+            <JFXTextArea fx:id="txtHerramientas" accessibleText="Herramientas" focusColor="#ff334c" labelFloat="true" layoutX="465.0" layoutY="150.0" prefHeight="60.0" prefWidth="160.0" promptText="Herramientas" unFocusColor="#999999">
                <font>
                   <Font name="Futura Medium" size="13.0" />
                </font>

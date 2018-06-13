@@ -18,9 +18,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   </environments>
   <mappers>
     <mapper resource="model/mapper/AcademiaMapper.xml"/>
-    <mapper resource="model/mapper/MinutaDeAcademiaMapper.xml"/>
     <mapper resource="model/mapper/UsuarioAcademicoMapper.xml"/>
-    <mapper resource="model/mapper/PlanDeCursoMapper.xml"/>
     <mapper resource="model/mapper/PlanDeTrabajoMapper.xml"/>
   </mappers>
 </configuration>

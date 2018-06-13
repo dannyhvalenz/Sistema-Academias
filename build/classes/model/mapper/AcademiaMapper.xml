@@ -20,10 +20,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM experienciaeducativa WHERE idAcademia = #{idAcademia}
     </select>
     
-    <select id="obtenerReuniones" resultType="model.pojos.Reunion" parameterType="model.pojos.Academia">
-        SELECT * FROM reunion WHERE idAcademia = #{idAcademia}
-    </select>
-    
     <insert id="guardarAcademia" parameterType="String">
         INSERT INTO academia (nombre)
         VALUES(#{nombre})

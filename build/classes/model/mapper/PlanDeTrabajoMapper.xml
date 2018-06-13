@@ -87,7 +87,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <insert id="guardarObjetivoParticular" parameterType="model.pojos.ObjetivoParticular">
-        INSERT INTO objetivoparticular (idObjetivoParticular,objetivo,metas,idPlanTrabajo)
+        INSERT INTO objetivoparticular (idObjetivoParticular,objetivo,metas,idPlanDeTrabajo)
         VALUES(#{idObjetivoParticular},#{objetivo},#{metas},#{idPlanDeTrabajo})
     </insert>
     

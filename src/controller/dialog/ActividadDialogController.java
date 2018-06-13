@@ -35,9 +35,13 @@ public class ActividadDialogController implements Initializable {
    * Metodo para crear actividades
    * @return actividad
    */
-  public Actividad crearActividad() {
-    Actividad act = new Actividad(txtAcciones.getText(), txtFechas.getText(), txtFormaOperar.getText());
+  public Actividad crearActividad(Integer idObjetivoParticular) {
+    Actividad act = new Actividad(txtAcciones.getText(), txtFechas.getText(), txtFormaOperar.getText(), idObjetivoParticular);
     return act;
   }
 
+    public Actividad crearActividad() {
+    Actividad act = new Actividad(txtAcciones.getText(), txtFechas.getText(), txtFormaOperar.getText());
+    return act;
+  }
 }

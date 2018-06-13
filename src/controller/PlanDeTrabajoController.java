@@ -112,6 +112,8 @@ public class PlanDeTrabajoController implements Initializable {
     private int posicionTablaActividad;
 
     private PlanDeTrabajo plandetrabajo;
+    
+    private ObjetivoParticular objetivoParticular;
 
     private List<Evaluacion> evaluacionesEE;
 
@@ -126,7 +128,6 @@ public class PlanDeTrabajoController implements Initializable {
     private UsuarioAcademico user;
     
     private boolean existe = false;
-    //private Integer idPlanTrabajo;
 
     
     public void iniciarDatosUsuario(UsuarioAcademico user, Integer idCoordinador, Integer idAcademia){
@@ -143,15 +144,16 @@ public class PlanDeTrabajoController implements Initializable {
             System.out.println("ID del Plan de Trabajo existente: " + idPlanDeTrabajo);
             plandetrabajo = plan.obtenerPlanDeTrabajoEspecifico(idPlanDeTrabajo);
             txtObjetivoGeneral.setText(plandetrabajo.getObjetivoGeneral());
-            ObjetivoParticular objetivoParticular = new ObjetivoParticular();
-            objetivoParticular = plan.obtenerObjetivoParticularEspecifico(idPlanDeTrabajo);
+            //objetivoParticular = new ObjetivoParticular();
+            //objetivoParticular = plan.obtenerObjetivoParticularEspecifico(plandetrabajo.getIdPlanDetrabajo());
+            //System.out.println("Metas: " + objetivoParticular.getMetas());
             //this.idPlanTrabajo = idPlanDeTrabajo;
-//            txtObjetivoParticular.setText(objetivoParticular.getObjetivo());
-//            txtMeta.setText(objetivoParticular.getMetas());
+            //txtObjetivoParticular.setText(objetivoParticular.getObjetivo());
+            //txtMeta.setText(objetivoParticular.getMetas());
                     
         }else{
-            plandetrabajo.setIdPlanDetrabajo(plan.obteneridPlanTrabajo()+1);
-            System.out.println("ID del Nuevo Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
+            //plandetrabajo.setIdPlanDetrabajo(1);
+            //System.out.println("ID del Nuevo Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
             plandetrabajo.setFormato("plantrabajo");
             LocalDate localDate = LocalDate.now();
             Date fechaHoy = Date.valueOf(localDate);
@@ -241,14 +243,16 @@ public class PlanDeTrabajoController implements Initializable {
         ObjetivoParticular objParticular = new ObjetivoParticular();
         PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
         objParticular.setIdObjetivoParticular(plan.obteneridObjetivoParticular()+1);
+        objParticular.setIdPlanDeTrabajo(plandetrabajo.getIdPlanDetrabajo());
         objParticular.setMetas(txtMeta.getText());
         objParticular.setObjetivo(txtObjetivoParticular.getText());
+        plan.guardarObjetivoParticular(objParticular);
         listaActividades.forEach(actividad ->{
+            actividad.setIdObjetivoParticular(objParticular.getIdObjetivoParticular());
             if(!plan.guardarActividad(actividad)) {
                 mensaje("Error","Error en la conexion con la base de datos");
             }
         });
-        plan.guardarObjetivoParticular(objParticular);
     }
   
     private void guardarParticipantes() {
@@ -282,14 +286,12 @@ public class PlanDeTrabajoController implements Initializable {
             evaluacionesEE = new ArrayList<>();
             EEPlanTrabajo ee = new EEPlanTrabajo();
             ee.setNombre(t.getText());
-            ee.setIdEEPlanTrabajo(plan.obteneridEEPlanTrabajo()+1);
-            ee.setIdPlanDeTrabajo(plandetrabajo.getIdPlanDetrabajo());
-            if(!plan.guardarEEPlanTrabajo(ee)){
-                mensaje("Error","Error en la conexion con la base de datos");
-            }
+            //ee.setIdEEPlanTrabajo(plan.obteneridEEPlanTrabajo()+1);
+            ee.setIdPlanDeTrabajo(plan.obteneridPlanTrabajo());
+            
             Tema tema = new Tema();
-            tema.setIdEEPlanDeTrabajo(ee.getIdEEPlanTrabajo());
-            System.out.println("Guardar");
+            
+            System.out.println("Guardar EEPLANDETRABAJO");
             StackPane contenido = (StackPane) t.getContent();
             AnchorPane contenedor = (AnchorPane) contenido.getChildren().get(0);
             for (Node node : contenedor.getChildren()) {
@@ -306,18 +308,33 @@ public class PlanDeTrabajoController implements Initializable {
                                 }
                             });
                             break;
-                        case "Primer Parcial"://Con los textfields
+                        case "Primer Parcial":
                             tema.setPrimerParcial(((JFXTextArea)node).getText());
+                            System.out.println("Guardar primer parcial");
+                            System.out.println("Primer parcial: " + ((JFXTextArea)node).getText());
                             break;
                         case "Segundo Parcial":
                             tema.setSegundoParcial(((JFXTextArea)node).getText());
+                            System.out.println("Guardar segundo parcial");
+                            System.out.println("Segundo parcial: " + ((JFXTextArea)node).getText());
                             break;
                         case "Posterior":
                             tema.setResto(((JFXTextArea)node).getText());
+                            System.out.println("Guardar resto examenes");
+                            System.out.println("Resto examenes: " + ((JFXTextArea)node).getText());
                             break;
+                        case "Herramientas":
+                            ee.setHerramientas(((JFXTextArea)node).getText());
+                            System.out.println("Guardar herramientas");
+                            System.out.println("Herramientas: " + ((JFXTextArea)node).getText());
                     }
                 }
             }
+            if(!plan.guardarEEPlanTrabajo(ee)){
+                mensaje("Error","Error en la conexion con la base de datos");
+            }
+            Integer idEEPlanTrabajo = plan.obteneridEEPlanTrabajo();
+            tema.setIdEEPlanDeTrabajo(idEEPlanTrabajo);
             if(!plan.guardarTema(tema)) {
                 mensaje("Error","Error en la conexion con la base de datos");
             }
@@ -343,22 +360,52 @@ public class PlanDeTrabajoController implements Initializable {
             plandetrabajo.setProgramaEducativo("Ingenieria de software");
             plandetrabajo.setObjetivoGeneral(txtObjetivoGeneral.getText());
             plan.actualizarPlanDeTrabajoEspecifico(plandetrabajo);
-            System.out.println("Clase plan de trabajo actualizada");
+            System.out.println("Plan de Trabajo actualizado");
             //OBJETIVO PARTICULAR
+            ObjetivoParticular objParticular = new ObjetivoParticular();
+            objParticular.setIdObjetivoParticular(plan.obteneridObjetivoParticular()+1);
+            objParticular.setIdPlanDeTrabajo(plandetrabajo.getIdPlanDetrabajo());
+            objParticular.setMetas(txtMeta.getText());
+            objParticular.setObjetivo(txtObjetivoParticular.getText());
+            plan.guardarObjetivoParticular(objParticular);
+            //ACTIVIDADES
+            //listaActividades.forEach(actividad ->{
+                //if(!plan.guardarActividad(actividad)) {
+                    //mensaje("Error","Error en la conexion con la base de datos");
+                //}
+            //});
             
             
-            //EEPLANTRABAJO
-            
-            
-            //EVALUACION
-            
-            //TEMA
+            //EEPLANDETRABAJO//TEMAS//EVALUACION
             
             //PARTICIPANTES
-            mensaje("Guardado","Se ha guardado el progreso del Plan de Trabajo");
+            
+            mensaje("Guardado","Se ha guardado el progreso del Plan de Trabajo existente");
         }else{
             System.out.println("Guardando nuevo plan de trabajo");
             System.out.println("ID del Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
+            plandetrabajo.setObjetivoGeneral(txtObjetivoGeneral.getText());
+            plan.guardarPlanDeTrabajo(plandetrabajo);
+            System.out.println("Plan de trabajo guardado");
+            //OBJETIVO PARTICULAR
+            ObjetivoParticular objParticular = new ObjetivoParticular();
+            //objParticular.setIdObjetivoParticular(plan.obteneridObjetivoParticular()+1);
+            objParticular.setIdPlanDeTrabajo(plan.obteneridPlanTrabajo());
+            objParticular.setMetas(txtMeta.getText());
+            objParticular.setObjetivo(txtObjetivoParticular.getText());
+            plan.guardarObjetivoParticular(objParticular);
+            System.out.println("Objetivo particular guardado");
+            //EEPLANDETRABAJO//TEMAS//EVALUACION
+            obtenerEELlenadas();
+            System.out.println("EEPlanDeTrabajo guardado");
+            System.out.println("Tema guardado");
+            System.out.println("Evaluacion guardado");
+            //ACTIVIDADES
+           // guardarActividades();
+            //System.out.println("Actividad guardado");
+            //PARTICIPANTES
+            
+            mensaje("Guardado","Se ha guardado el progreso del nuevo Plan de Trabajo");
         }
         ObservableList<AnchorPane> listaParticipantes = listParticipantes.getItems();
         int contador = 0;
@@ -373,16 +420,14 @@ public class PlanDeTrabajoController implements Initializable {
             }
             contador++;
         }
-        plandetrabajo.setObjetivoGeneral(txtObjetivoGeneral.getText());
         if (!asistentes.isEmpty()) {
             //PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
             if(plan.guardarPlanDeTrabajo(plandetrabajo)){
                 for(Maestro participante : asistentes){
                     plan.guardarParticipante(new Participante(participante.getIdUsuarioAcademico(), plandetrabajo.getIdPlanDetrabajo()));
                 }
-                //guardarActividades();
-                //obtenerEELlenadas();
-                mensaje("Guardado", "Se ha guardado el plan de trabajo");
+                
+                mensaje("Guardado", "Se ha guardado el progreso del plan de trabajo");
             }else{
                mensaje("Error","Error en la conexion con la base de datos");
             }
@@ -405,9 +450,22 @@ public class PlanDeTrabajoController implements Initializable {
         content.setBody(p);
         JFXDialog dialog = new JFXDialog(rootPane, content, JFXDialog.DialogTransition.CENTER);
         JFXButton aceptar = new JFXButton("ACEPTAR");
+        
         aceptar.setOnAction((ActionEvent e) -> {
-            Actividad act = display.crearActividad();
-            listaActividades.add(act);
+            //PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
+            //Integer idObjetivoParticular;
+            //if(plan.obteneridPlanTrabajo()==null){
+                //idObjetivoParticular = plan.obteneridObjetivoParticular() + 1;
+                //Actividad act = display.crearActividad(idObjetivoParticular);
+                //listaActividades.add(act);
+            //}else{
+                //idObjetivoParticular = plan.obteneridObjetivoParticular();
+                Actividad act = display.crearActividad();
+                listaActividades.add(act);
+            //}
+            
+            //Actividad act = display.crearActividad();
+            //listaActividades.add(act);
             dialog.close();
         });
         content.setActions(aceptar);

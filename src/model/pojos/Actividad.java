@@ -49,6 +49,13 @@ public class Actividad {
         this.idObjetivoParticular = idObjetivoParticular;
     }
 
+    public Actividad(String accion, String fecha, String formaDeOperar, Integer idObjetivoParticular) {
+        this.accion = new SimpleStringProperty(accion);
+        this.fecha = new SimpleStringProperty(fecha);
+        this.formaDeOperar = new SimpleStringProperty(formaDeOperar);
+        this.idObjetivoParticular = idObjetivoParticular;
+    }
+
     /**
      * Getter id actividad
      * @return idActividad

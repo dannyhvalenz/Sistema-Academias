@@ -129,23 +129,6 @@ public class PlanDeTrabajoDAO {
         }
     }
     
-//    public static boolean actualizar(Integer idPlanTrabajo){
-//        SqlSession conn = null;
-//        try{
-//            conn = MyBatisUtils.getSession();
-//            conn.update("PlanDeTrabajo.actualizar",idPlanTrabajo);
-//            conn.commit();
-//            return true;
-//        }catch(Exception ex){
-//            ex.printStackTrace();
-//        }finally{
-//            if(conn!=null){
-//                conn.close();
-//            }
-//        }
-//        return false;
-//    }
-    
     /**
      * Obtener las evaluaciones base obtenidas con base al Plan de Trabajo de la Academia perteneciente
      * @param idCurso id del curso del cual se esta creando el plan de curso
