@@ -54,22 +54,6 @@ public class PlanDeTrabajoDAO {
         return num;
     }
     
-    public PlanDeTrabajo obtenerPlanDeTrabajoEspecifico(Integer idPlanTrabajo) {
-        PlanDeTrabajo plan = new PlanDeTrabajo();
-        SqlSession conn = null;
-        try {
-            conn = MyBatisUtils.getSession();
-            plan = conn.selectOne("PlanDeTrabajo.obtenerPlanDeTrabajoEspecifico", idPlanTrabajo);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return plan;
-    }
-    
     public Integer obteneridEEPlanTrabajo() {
         Integer num = null;
         SqlSession conn = null;
@@ -107,6 +91,61 @@ public class PlanDeTrabajoDAO {
         return plan;
     }
 
+    
+    public PlanDeTrabajo obtenerPlanDeTrabajoEspecifico(Integer idPlanTrabajo) {
+        PlanDeTrabajo plan = new PlanDeTrabajo();
+        SqlSession conn = null;
+        try {
+            conn = MyBatisUtils.getSession();
+            plan = conn.selectOne("PlanDeTrabajo.obtenerPlanDeTrabajoEspecifico", idPlanTrabajo);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return plan;
+    }
+    
+    /**
+     *
+     * @param idPlanTrabajo
+     * @return
+     */
+    public void actualizarPlanDeTrabajoEspecifico(PlanDeTrabajo plandetrabajo) {
+        //PlanDeTrabajo plan = new PlanDeTrabajo();
+        SqlSession conn = null;
+        try {
+            conn = MyBatisUtils.getSession();
+            conn.update("PlanDeTrabajo.actualizarPlanDeTrabajoEspecifico",plandetrabajo);
+            conn.commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }
+    
+//    public static boolean actualizar(Integer idPlanTrabajo){
+//        SqlSession conn = null;
+//        try{
+//            conn = MyBatisUtils.getSession();
+//            conn.update("PlanDeTrabajo.actualizar",idPlanTrabajo);
+//            conn.commit();
+//            return true;
+//        }catch(Exception ex){
+//            ex.printStackTrace();
+//        }finally{
+//            if(conn!=null){
+//                conn.close();
+//            }
+//        }
+//        return false;
+//    }
+    
     /**
      * Obtener las evaluaciones base obtenidas con base al Plan de Trabajo de la Academia perteneciente
      * @param idCurso id del curso del cual se esta creando el plan de curso
@@ -127,7 +166,28 @@ public class PlanDeTrabajoDAO {
         }
         return lista;
     }
-    
+            
+    /**
+     * Obtener las evaluaciones base obtenidas con base al Plan de Trabajo de la Academia perteneciente
+     * @param idCurso id del curso del cual se esta creando el plan de curso
+     * @return evaluaciones
+     */
+    public ObjetivoParticular obtenerObjetivoParticularEspecifico(Integer idPlanTrabajo) {
+        ObjetivoParticular objetivo = new ObjetivoParticular();
+        SqlSession conn = null;
+        try {
+            conn = MyBatisUtils.getSession();
+            objetivo = conn.selectOne("PlanDeTrabajo.obtenerObjetivoParticularEspecifico", idPlanTrabajo);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return objetivo;
+    }
+        
     /**
      * Obtener todos los cursos de un determinado maestro
      * @param idMaestro id del maestro

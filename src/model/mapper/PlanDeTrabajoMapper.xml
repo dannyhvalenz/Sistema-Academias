@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         INNER JOIN periodoa pa ON pa.idPlanDeTrabajo = pt.idPlanDeTrabajo 
         WHERE pa.idAcademia = #{idAcademia)
     </select>
-        
+            
     <select id="obtenerPlanDeTrabajoEspecifico" resultType="model.pojos.PlanDeTrabajo" parameterType="Integer">
         SELECT idPlanDeTrabajo, formato, fechaAprobacion, objetivoGeneral, programaEducativo 
         FROM plandetrabajo 
@@ -32,6 +32,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="obtenerObjetivosParticulares" resultType="model.pojos.ObjetivoParticular" parameterType="Integer">
         SELECT * FROM objetivoparticular WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
     </select>
+    
+    <select id="obtenerObjetivoParticularEspecifico" resultType="model.pojos.PlanDeTrabajo" parameterType="Integer">
+        SELECT idObjetivoParticular,objetivo,metas
+        FROM objetivoparticular 
+        WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
+    </select>
+    
+    <update id="actualizarPlanDeTrabajoEspecifico" parameterType="model.pojos.PlanDeTrabajo">
+        UPDATE plandetrabajo SET
+        fechaAprobacion = #{fechaAprobacion},
+        objetivoGeneral = #{objetivoGeneral},
+        programaEducativo = #{programaEducativo}
+        WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
+    </update>
     
     <select id="obtenerActividades" resultType="model.pojos.Actividad" parameterType="Integer">
         SELECT * FROM actividad WHERE idObjetivoPartciular = #{idObjetivoPartciular}

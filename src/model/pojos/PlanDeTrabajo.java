@@ -9,7 +9,7 @@ import java.util.Date;
  * @version 1.1
  */
 public class PlanDeTrabajo {
-    private Integer idPlanDetrabajo;
+    private Integer idPlanDeTrabajo;
     private String formato;
     private Date fechaAprobacion;
     private String objetivoGeneral;
@@ -30,8 +30,8 @@ public class PlanDeTrabajo {
    * @param programaEducativo Corresponde al programa educativo al que pertenece
    * el plan de trabajo.
    */
-    public PlanDeTrabajo(Integer idPlanDetrabajo, String formato, Date fechaAprobacion, String objetivoGeneral, String programaEducativo) {
-        this.idPlanDetrabajo = idPlanDetrabajo;
+    public PlanDeTrabajo(Integer idPlanDeTrabajo, String formato, Date fechaAprobacion, String objetivoGeneral, String programaEducativo) {
+        this.idPlanDeTrabajo = idPlanDeTrabajo;
         this.formato = formato;
         this.fechaAprobacion = fechaAprobacion;
         this.objetivoGeneral = objetivoGeneral;
@@ -42,15 +42,15 @@ public class PlanDeTrabajo {
      * @return idPlanDeTrabajo
      */
     public Integer getIdPlanDetrabajo() {
-        return idPlanDetrabajo;
+        return idPlanDeTrabajo;
     }
 
     /**
     *Establece el identificador del Plan de trabajo.
     * @param idPlanDeTrabajo Corresponde al identificador del plan de trabajo.
     */
-    public void setIdPlanDetrabajo(Integer idPlanDetrabajo) {
-        this.idPlanDetrabajo = idPlanDetrabajo;
+    public void setIdPlanDetrabajo(Integer idPlanDeTrabajo) {
+        this.idPlanDeTrabajo = idPlanDeTrabajo;
     }
 
     /**

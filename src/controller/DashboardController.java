@@ -111,7 +111,7 @@ public class DashboardController implements Initializable {
       Logger.getLogger(DashboardController.class.getName()).log(Level.SEVERE, null, ex);
     }
     PlanDeTrabajoController planTrabajo = loader.getController();
-    planTrabajo.iniciarDatosUsuario(usuario.getIdUsuarioAcademico(), this.idAcademia);
+    planTrabajo.iniciarDatosUsuario(usuario, usuario.getIdUsuarioAcademico(), this.idAcademia);
     StackPane agregarView = loader.getRoot();
     Scene newScene = new Scene(agregarView);
     Stage curStage = (Stage) rootPane.getScene().getWindow();

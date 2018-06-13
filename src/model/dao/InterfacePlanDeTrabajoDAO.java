@@ -52,8 +52,8 @@ public interface InterfacePlanDeTrabajoDAO {
      */
     PlanDeTrabajo obtenerPlanDeTrabajo(Integer idAcademia);
     
-    
     PlanDeTrabajo obtenerPlanDeTrabajoEspecifico(Integer idPlanTrabajo);
+    
     /**
      * Obtener las evaluaciones base obtenidas con base al Plan de Trabajo de la Academia perteneciente
      * @param idTrabajo id del Trabajo del cual se esta creando el plan de Trabajo
