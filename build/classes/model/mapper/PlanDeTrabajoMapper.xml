@@ -22,9 +22,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         INNER JOIN periodoa pa ON pa.idPlanDeTrabajo = pt.idPlanDeTrabajo 
         WHERE pa.idAcademia = #{idAcademia)
     </select>
-        
+            
+    <select id="obtenerPlanDeTrabajoEspecifico" resultType="model.pojos.PlanDeTrabajo" parameterType="Integer">
+        SELECT idPlanDeTrabajo, formato, fechaAprobacion, objetivoGeneral, programaEducativo 
+        FROM plandetrabajo 
+        WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
+    </select>
+    
     <select id="obtenerObjetivosParticulares" resultType="model.pojos.ObjetivoParticular" parameterType="Integer">
         SELECT * FROM objetivoparticular WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
+    </select>
+    
+    <select id="obtenerObjetivoParticularEspecifico" resultType="model.pojos.PlanDeTrabajo" parameterType="Integer">
+        SELECT idObjetivoParticular,objetivo,metas
+        FROM objetivoparticular 
+        WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
     </select>
     
     <select id="obtenerActividades" resultType="model.pojos.Actividad" parameterType="Integer">

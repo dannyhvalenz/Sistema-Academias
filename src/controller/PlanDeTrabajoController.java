@@ -126,13 +126,23 @@ public class PlanDeTrabajoController implements Initializable {
     private UsuarioAcademico user;
 
     public void iniciarDatosUsuario(UsuarioAcademico user, Integer idCoordinador, Integer idAcademia){
+        this.idCoordinador = idCoordinador;
+        this.idAcademia = idAcademia;
         this.user = user;
         plandetrabajo = new PlanDeTrabajo();
         PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
+        cargarParticipantes();
         if(plan.obteneridPlanTrabajo() != null ){
             mensaje("Existe plan de trabajo", "Hay un plan de trabajo guardado en la Base de Datos");
             //recuperar
-            //txtObjetivoGeneral.setText(plan.obtenerObjetivoParticulares())
+            Integer idPlanDeTrabajo = plan.obteneridPlanTrabajo();
+            plandetrabajo = plan.obtenerPlanDeTrabajoEspecifico(idPlanDeTrabajo);
+            txtObjetivoGeneral.setText(plandetrabajo.getObjetivoGeneral());
+            ObjetivoParticular objetivoParticular = new ObjetivoParticular();
+            objetivoParticular = plan.obtenerObjetivoParticularEspecifico(idPlanDeTrabajo);
+//            txtObjetivoParticular.setText(objetivoParticular.getObjetivo());
+//            txtMeta.setText(objetivoParticular.getMetas());
+                    
         }else{
             plandetrabajo.setIdPlanDetrabajo(plan.obteneridPlanTrabajo()+1);
             plandetrabajo.setFormato("plantrabajo");
@@ -140,10 +150,9 @@ public class PlanDeTrabajoController implements Initializable {
             Date fechaHoy = Date.valueOf(localDate);
             plandetrabajo.setFechaAprobacion(fechaHoy);
             plandetrabajo.setProgramaEducativo("Ingenieria de software");
-            this.idCoordinador = idCoordinador;
-            this.idAcademia = idAcademia;
+
             inicializarTablaActividad();
-            cargarParticipantes();
+            
             System.out.println(idAcademia);
             String[] nombres = { "Programacion", "Principios de construccion", "Principos de Diseño"};
             for (String nombre : nombres) {
