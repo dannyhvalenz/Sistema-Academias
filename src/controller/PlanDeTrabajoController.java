@@ -335,7 +335,7 @@ public class PlanDeTrabajoController implements Initializable {
         if(existe == true){
             System.out.println("Actualizando plan de trabajo");
             System.out.println("ID del Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
-            
+            //PLAN DE TRABAJO
             plandetrabajo.setFormato("plantrabajo");
             LocalDate localDate = LocalDate.now();
             Date fechaHoy = Date.valueOf(localDate);
@@ -343,6 +343,19 @@ public class PlanDeTrabajoController implements Initializable {
             plandetrabajo.setProgramaEducativo("Ingenieria de software");
             plandetrabajo.setObjetivoGeneral(txtObjetivoGeneral.getText());
             plan.actualizarPlanDeTrabajoEspecifico(plandetrabajo);
+            System.out.println("Clase plan de trabajo actualizada");
+            //OBJETIVO PARTICULAR
+            
+            
+            //EEPLANTRABAJO
+            
+            
+            //EVALUACION
+            
+            //TEMA
+            
+            //PARTICIPANTES
+            mensaje("Guardado","Se ha guardado el progreso del Plan de Trabajo");
         }else{
             System.out.println("Guardando nuevo plan de trabajo");
             System.out.println("ID del Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
