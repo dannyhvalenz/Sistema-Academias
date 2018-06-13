@@ -248,7 +248,7 @@ public class PlanDeTrabajoController implements Initializable {
         objParticular.setObjetivo(txtObjetivoParticular.getText());
         plan.guardarObjetivoParticular(objParticular);
         listaActividades.forEach(actividad ->{
-            actividad.setIdObjetivoParticular(objParticular.getIdObjetivoParticular());
+            actividad.setIdObjetivoParticular(plan.obteneridObjetivoParticular());
             if(!plan.guardarActividad(actividad)) {
                 mensaje("Error","Error en la conexion con la base de datos");
             }
@@ -301,12 +301,6 @@ public class PlanDeTrabajoController implements Initializable {
                             ((TableView)node).getItems().forEach(evaluacion -> {
                                 evaluacionesEE.add((Evaluacion)evaluacion);
                             });
-                            evaluacionesEE.forEach(evaluacion -> {
-                                evaluacion.setIdEEPlanTrabajo(ee.getIdEEPlanTrabajo());
-                                if(!plan.guardarEvaluacion(evaluacion)) {
-                                    mensaje("Error","Error en la conexion con la base de datos");
-                                }
-                            });
                             break;
                         case "Primer Parcial":
                             tema.setPrimerParcial(((JFXTextArea)node).getText());
@@ -335,6 +329,14 @@ public class PlanDeTrabajoController implements Initializable {
             }
             Integer idEEPlanTrabajo = plan.obteneridEEPlanTrabajo();
             tema.setIdEEPlanDeTrabajo(idEEPlanTrabajo);
+            
+            evaluacionesEE.forEach(evaluacion -> {
+                evaluacion.setIdEEPlanTrabajo(idEEPlanTrabajo);
+                    if(!plan.guardarEvaluacion(evaluacion)) {
+                        mensaje("Error","Error en la conexion con la base de datos");
+                    }
+            });
+            
             if(!plan.guardarTema(tema)) {
                 mensaje("Error","Error en la conexion con la base de datos");
             }
@@ -401,8 +403,12 @@ public class PlanDeTrabajoController implements Initializable {
             System.out.println("Tema guardado");
             System.out.println("Evaluacion guardado");
             //ACTIVIDADES
-           // guardarActividades();
-            //System.out.println("Actividad guardado");
+            listaActividades.forEach(actividad ->{
+                actividad.setIdObjetivoParticular(plan.obteneridObjetivoParticular());
+                if(!plan.guardarActividad(actividad)) {
+                    mensaje("Error","Error en la conexion con la base de datos");
+                }
+            });
             //PARTICIPANTES
             
             mensaje("Guardado","Se ha guardado el progreso del nuevo Plan de Trabajo");

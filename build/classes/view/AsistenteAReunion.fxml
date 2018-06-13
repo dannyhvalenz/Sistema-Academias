@@ -18,6 +18,5 @@
          </font>
       </Label>
       <Label fx:id="labelEE" layoutX="72.0" layoutY="49.0" prefHeight="21.0" prefWidth="330.0" text="Experiencia Educativa que lo hace parte de la Academia" textFill="#999999" visible="false" />
-      <AnchorPane layoutX="7.0" layoutY="81.0" prefHeight="1.0" prefWidth="399.0" style="-fx-background-color: #FAFAFA;" />
    </children>
 </AnchorPane>
