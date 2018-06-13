@@ -113,7 +113,7 @@ public class PlanDeTrabajoController implements Initializable {
 
     private PlanDeTrabajo plandetrabajo;
     
-    private ObjetivoParticular objetivoParticular;
+   // private ObjetivoParticular objetivoParticular;
 
     private List<Evaluacion> evaluacionesEE;
 
@@ -146,19 +146,58 @@ public class PlanDeTrabajoController implements Initializable {
             plandetrabajo = plan.obtenerPlanDeTrabajoEspecifico(idPlanDeTrabajo);
             txtObjetivoGeneral.setText(plandetrabajo.getObjetivoGeneral());
             //OBJETIVOPARTICULAR
-            objetivoParticular = new ObjetivoParticular();
+            ObjetivoParticular objetivoParticular = new ObjetivoParticular();
             //Integer idObjetivoParticular = plan.obteneridObjetivoParticular();
             objetivoParticular = plan.obtenerObjetivoParticularEspecifico(idPlanDeTrabajo);
             //System.out.println("Metas: " + objetivoParticular.getMetas());
             txtObjetivoParticular.setText(objetivoParticular.getObjetivo());
             txtMeta.setText(objetivoParticular.getMetas());
+            Integer idObjetivoParticular = plan.obteneridObjetivoParticular();
             //ACTIVIDADES
-            
+            System.out.println("ID Objetivo Particular: " + idObjetivoParticular);
+            List<Actividad> actividades = plan.obtenerActividades(idObjetivoParticular);
+            for(Actividad act : actividades){
+                System.out.println("ID Actividad: " + act.getIdActividad());
+//                listaActividades.add(act);
+            }
+//            inicializarTablaActividad();
             //EEPLANDETRABAJO
-            
+            List<EEPlanTrabajo> experiencias = plan.obtenerEEPlanDeTrabajo(idPlanDeTrabajo);
+            for(EEPlanTrabajo ee : experiencias){
+                System.out.println("ID EEPlanDeTrabajo: " + ee.getIdEEPlanTrabajo());
+            }  
+//           
+//            
             //TEMA
             
             //EVALUACION
+            
+            //PARTICIPANTES
+//            List<Maestro> maestros = plan.obtenerParticipantes(idPlanDeTrabajo);
+//            for(Maestro participante : maestros){
+//                //ObservableList<AnchorPane>
+//            }
+////            ObservableList<AnchorPane> listaParticipantes = listParticipantes.getItems();
+//            int contador = 0;
+//            for (AnchorPane part : listaParticipantes) {
+//                for (Node node : part.getChildren()) {
+//                    if ("Participa".equals(node.getAccessibleText())) {
+//                        if (((JFXCheckBox) node).isSelected()) {
+//                            asistentes.add(participantes.get(contador));
+//                            System.out.println("Participo: " + participantes.get(contador).getNombre());
+//                        }
+//                    }
+//                }
+//                contador++;
+//            }
+//            if (!asistentes.isEmpty()) {
+//                for(Maestro participante : asistentes){
+//                    plan.guardarParticipante(new Participante(participante.getIdUsuarioAcademico(), plan.obteneridPlanTrabajo()));
+//                    System.out.println("Participante guardado");
+//                }
+//            }else{
+//               mensaje("Error","Error en la conexion con la base de datos");
+//            }
         }else{
             //plandetrabajo.setIdPlanDetrabajo(1);
             //System.out.println("ID del Nuevo Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
@@ -167,7 +206,7 @@ public class PlanDeTrabajoController implements Initializable {
             Date fechaHoy = Date.valueOf(localDate);
             plandetrabajo.setFechaAprobacion(fechaHoy);
             plandetrabajo.setProgramaEducativo("Ingenieria de software");
-
+            
             inicializarTablaActividad();
             
             System.out.println(idAcademia);
@@ -333,11 +372,12 @@ public class PlanDeTrabajoController implements Initializable {
             System.out.println("Plan de Trabajo actualizado");
             //OBJETIVO PARTICULAR
             ObjetivoParticular objParticular = new ObjetivoParticular();
-            objParticular.setIdObjetivoParticular(plan.obteneridObjetivoParticular()+1);
-            objParticular.setIdPlanDeTrabajo(plandetrabajo.getIdPlanDetrabajo());
+            objParticular.setIdObjetivoParticular(plan.obteneridObjetivoParticular());
+            objParticular.setIdPlanDeTrabajo(plan.obteneridPlanTrabajo());
             objParticular.setMetas(txtMeta.getText());
             objParticular.setObjetivo(txtObjetivoParticular.getText());
-            plan.guardarObjetivoParticular(objParticular);
+            plan.actualizarObjetivoParticularEspecifico(objParticular);
+            System.out.println("Objetivo particular actualizado");
             //ACTIVIDADES
             //listaActividades.forEach(actividad ->{
                 //if(!plan.guardarActividad(actividad)) {

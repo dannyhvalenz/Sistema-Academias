@@ -129,6 +129,21 @@ public class PlanDeTrabajoDAO {
         }
     }
     
+    public void actualizarObjetivoParticularEspecifico(ObjetivoParticular objetivoparticular) {
+        //PlanDeTrabajo plan = new PlanDeTrabajo();
+        SqlSession conn = null;
+        try {
+            conn = MyBatisUtils.getSession();
+            conn.update("PlanDeTrabajo.actualizarObjetivoParticularEspecifico",objetivoparticular);
+            conn.commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }        
     /**
      * Obtener las evaluaciones base obtenidas con base al Plan de Trabajo de la Academia perteneciente
      * @param idCurso id del curso del cual se esta creando el plan de curso
@@ -176,12 +191,12 @@ public class PlanDeTrabajoDAO {
      * @param idMaestro id del maestro
      * @return cursos del maestro
      */
-    public List<Actividad> obtenerActividades(Integer idPlanDeTrabajo) {
+    public List<Actividad> obtenerActividades(Integer idObjetivoParticular) {
         List<Actividad> lista = new ArrayList<Actividad>();
         SqlSession conn = null;
         try {
             conn = MyBatisUtils.getSession();
-            lista = conn.selectList("PlanDeTrabajo.obtenerActividades", idPlanDeTrabajo);
+            lista = conn.selectList("PlanDeTrabajo.obtenerActividades", idObjetivoParticular);
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
@@ -197,12 +212,12 @@ public class PlanDeTrabajoDAO {
      * @param idPlanDeCurso id del plan de curso
      * @return evaluaciones
      */
-    public List<EEPlanTrabajo> obtenerEEPlanTrabajo(Integer idPlanDeTrabajo) {
+    public List<EEPlanTrabajo> obtenerEEPlanDeTrabajo(Integer idPlanDeTrabajo) {
         List<EEPlanTrabajo> lista = new ArrayList<EEPlanTrabajo>();
         SqlSession conn = null;
         try {
             conn = MyBatisUtils.getSession();
-            lista = conn.selectList("PlanDeTrabajo.obtenerEEPlanTrabajo", idPlanDeTrabajo);
+            lista = conn.selectList("PlanDeTrabajo.obtenerEEPlanDeTrabajo", idPlanDeTrabajo);
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {

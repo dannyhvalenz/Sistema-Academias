@@ -47,8 +47,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
     </update>
     
+    <update id="actualizarObjetivoParticularEspecifico" parameterType="model.pojos.ObjetivoParticular">
+        UPDATE objetivoparticular SET
+        objetivo = #{objetivo},
+        metas = #{metas},
+        idPlanDeTrabajo = #{idPlanDeTrabajo}
+        WHERE idObjetivoParticular = #{idObjetivoParticular}
+    </update>
+    
     <select id="obtenerActividades" resultType="model.pojos.Actividad" parameterType="Integer">
-        SELECT * FROM actividad WHERE idObjetivoPartciular = #{idObjetivoPartciular}
+        SELECT * FROM actividad WHERE idObjetivoParticular = #{idObjetivoParticular}
     </select>
     
     <select id="obtenerEEPlanDeTrabajo" resultType="model.pojos.EEPlanTrabajo" parameterType="Integer">
@@ -70,12 +78,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         LEFT OUTER JOIN usuarioacademico u ON u.idUsuarioAcademico = m.idUsuarioAcademico
         WHERE ppt.idPlanDeTrabajo = #{idPlanDeTrabajo}
     </select>
-    
-    
-    
-    
-    
-    
     
     <insert id="guardarEEPlanDeTrabajo" parameterType="model.pojos.EEPlanTrabajo">
         INSERT INTO eeplantrabajo (idEEPlanTrabajo,nombre,herramientas,idPlanDeTrabajo)
