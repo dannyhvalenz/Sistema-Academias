@@ -71,6 +71,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE ppt.idPlanDeTrabajo = #{idPlanDeTrabajo}
     </select>
     
+    
+    
+    
+    
+    
+    
     <insert id="guardarEEPlanDeTrabajo" parameterType="model.pojos.EEPlanTrabajo">
         INSERT INTO eeplantrabajo (idEEPlanTrabajo,nombre,herramientas,idPlanDeTrabajo)
         VALUES(#{idEEPlanTrabajo},#{nombre},#{herramientas},#{idPlanDeTrabajo})
@@ -98,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <insert id="guardarParticipante" parameterType="model.pojos.Participante">
         INSERT INTO participante_plantrabajo (idMaestro, idPlanDeTrabajo)
-        VALUES(#{idMaestro},#{idDocumento})
+        VALUES(#{idMaestro},#{idPlanDeTrabajo})
     </insert>
     
     <insert id="guardarPlanDeTrabajo" parameterType="model.pojos.PlanDeTrabajo">

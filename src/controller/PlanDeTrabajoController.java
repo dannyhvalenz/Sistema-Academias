@@ -144,10 +144,10 @@ public class PlanDeTrabajoController implements Initializable {
             System.out.println("ID del Plan de Trabajo existente: " + idPlanDeTrabajo);
             plandetrabajo = plan.obtenerPlanDeTrabajoEspecifico(idPlanDeTrabajo);
             txtObjetivoGeneral.setText(plandetrabajo.getObjetivoGeneral());
-            //objetivoParticular = new ObjetivoParticular();
-            //objetivoParticular = plan.obtenerObjetivoParticularEspecifico(plandetrabajo.getIdPlanDetrabajo());
+            objetivoParticular = new ObjetivoParticular();
+            //Integer idObjetivoParticular = plan.obteneridObjetivoParticular();
+            //objetivoParticular = plan.obtenerObjetivoParticularEspecifico(idPlanDeTrabajo);
             //System.out.println("Metas: " + objetivoParticular.getMetas());
-            //this.idPlanTrabajo = idPlanDeTrabajo;
             //txtObjetivoParticular.setText(objetivoParticular.getObjetivo());
             //txtMeta.setText(objetivoParticular.getMetas());
                     
@@ -268,7 +268,7 @@ public class PlanDeTrabajoController implements Initializable {
         int contador = 0;
         for (AnchorPane part : listaParticipantes) {
             for (Node node : part.getChildren()) {
-                if ("Asistiendo".equals(node.getAccessibleText())) {
+                if ("Participa".equals(node.getAccessibleText())) {
                     if (((JFXCheckBox) node).isSelected()) {
                         asistentes.add(participantes.get(contador));
                         System.out.println("Participo: " + participantes.get(contador).getNombre() + " " + participantes.get(contador).getApellidos());
@@ -410,33 +410,28 @@ public class PlanDeTrabajoController implements Initializable {
                 }
             });
             //PARTICIPANTES
-            
-            mensaje("Guardado","Se ha guardado el progreso del nuevo Plan de Trabajo");
-        }
-        ObservableList<AnchorPane> listaParticipantes = listParticipantes.getItems();
-        int contador = 0;
-        for (AnchorPane part : listaParticipantes) {
-            for (Node node : part.getChildren()) {
-                if ("Asistiendo".equals(node.getAccessibleText())) {
-                    if (((JFXCheckBox) node).isSelected()) {
-                        asistentes.add(participantes.get(contador));
-                        System.out.println("Participo: " + participantes.get(contador).getNombre());
+            ObservableList<AnchorPane> listaParticipantes = listParticipantes.getItems();
+            int contador = 0;
+            for (AnchorPane part : listaParticipantes) {
+                for (Node node : part.getChildren()) {
+                    if ("Participa".equals(node.getAccessibleText())) {
+                        if (((JFXCheckBox) node).isSelected()) {
+                            asistentes.add(participantes.get(contador));
+                            System.out.println("Participo: " + participantes.get(contador).getNombre());
+                        }
                     }
                 }
+                contador++;
             }
-            contador++;
-        }
-        if (!asistentes.isEmpty()) {
-            //PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
-            if(plan.guardarPlanDeTrabajo(plandetrabajo)){
+            if (!asistentes.isEmpty()) {
                 for(Maestro participante : asistentes){
-                    plan.guardarParticipante(new Participante(participante.getIdUsuarioAcademico(), plandetrabajo.getIdPlanDetrabajo()));
+                    plan.guardarParticipante(new Participante(participante.getIdUsuarioAcademico(), plan.obteneridPlanTrabajo()));
+                    System.out.println("Participante guardado");
                 }
-                
-                mensaje("Guardado", "Se ha guardado el progreso del plan de trabajo");
             }else{
                mensaje("Error","Error en la conexion con la base de datos");
             }
+            mensaje("Guardado","Se ha guardado el progreso del nuevo Plan de Trabajo");
         }
     }
     
@@ -456,22 +451,9 @@ public class PlanDeTrabajoController implements Initializable {
         content.setBody(p);
         JFXDialog dialog = new JFXDialog(rootPane, content, JFXDialog.DialogTransition.CENTER);
         JFXButton aceptar = new JFXButton("ACEPTAR");
-        
         aceptar.setOnAction((ActionEvent e) -> {
-            //PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
-            //Integer idObjetivoParticular;
-            //if(plan.obteneridPlanTrabajo()==null){
-                //idObjetivoParticular = plan.obteneridObjetivoParticular() + 1;
-                //Actividad act = display.crearActividad(idObjetivoParticular);
-                //listaActividades.add(act);
-            //}else{
-                //idObjetivoParticular = plan.obteneridObjetivoParticular();
-                Actividad act = display.crearActividad();
-                listaActividades.add(act);
-            //}
-            
-            //Actividad act = display.crearActividad();
-            //listaActividades.add(act);
+            Actividad act = display.crearActividad();
+            listaActividades.add(act);
             dialog.close();
         });
         content.setActions(aceptar);

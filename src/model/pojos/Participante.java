@@ -7,7 +7,7 @@ package model.pojos;
  * @version 1.1
  */
 public class Participante {
-    private Integer idDocumento;
+    private Integer idPlanDeTrabajo;
     private Integer idMaestro;
     
     /**
@@ -21,25 +21,25 @@ public class Participante {
     * @param idDocumento Corresponde al identificador del documento
     * @param idMaestro Corresponde al identificador del maestro que esta asociado.
     */
-    public Participante(Integer idMaestro ,Integer idDocumento) {
+    public Participante(Integer idMaestro ,Integer idPlanDeTrabajo) {
         this.idMaestro = idMaestro;
-        this.idDocumento = idDocumento;
+        this.idPlanDeTrabajo = idPlanDeTrabajo;
     }
     
     /**
     *Retorna el identificador del documento.
     * @return idDocumento
     */
-    public Integer getIdDocumento() {
-        return idDocumento;
+    public Integer getIdPlanDeTrabajo() {
+        return idPlanDeTrabajo;
     }
 
     /**
     *Establece el identificador del documento al que se hace referencia.
     * @param idDocumento Corresponde al identificador del documento.
     */
-    public void setIdDocumento(Integer idDocumento) {
-        this.idDocumento = idDocumento;
+    public void setIdPlanDeTrabajo(Integer idPlanDeTrabajo) {
+        this.idPlanDeTrabajo = idPlanDeTrabajo;
     }
 
     /**
