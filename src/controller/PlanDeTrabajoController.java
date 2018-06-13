@@ -140,17 +140,25 @@ public class PlanDeTrabajoController implements Initializable {
         if(plan.obteneridPlanTrabajo() != null ){
             existe = true;
             mensaje("Existe plan de trabajo", "Hay un plan de trabajo guardado en la Base de Datos");
+            //PLANDETRABAJO
             Integer idPlanDeTrabajo = plan.obteneridPlanTrabajo();
             System.out.println("ID del Plan de Trabajo existente: " + idPlanDeTrabajo);
             plandetrabajo = plan.obtenerPlanDeTrabajoEspecifico(idPlanDeTrabajo);
             txtObjetivoGeneral.setText(plandetrabajo.getObjetivoGeneral());
+            //OBJETIVOPARTICULAR
             objetivoParticular = new ObjetivoParticular();
             //Integer idObjetivoParticular = plan.obteneridObjetivoParticular();
-            //objetivoParticular = plan.obtenerObjetivoParticularEspecifico(idPlanDeTrabajo);
+            objetivoParticular = plan.obtenerObjetivoParticularEspecifico(idPlanDeTrabajo);
             //System.out.println("Metas: " + objetivoParticular.getMetas());
-            //txtObjetivoParticular.setText(objetivoParticular.getObjetivo());
-            //txtMeta.setText(objetivoParticular.getMetas());
-                    
+            txtObjetivoParticular.setText(objetivoParticular.getObjetivo());
+            txtMeta.setText(objetivoParticular.getMetas());
+            //ACTIVIDADES
+            
+            //EEPLANDETRABAJO
+            
+            //TEMA
+            
+            //EVALUACION
         }else{
             //plandetrabajo.setIdPlanDetrabajo(1);
             //System.out.println("ID del Nuevo Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
@@ -237,46 +245,6 @@ public class PlanDeTrabajoController implements Initializable {
         actividadFormaOperar.setCellValueFactory(new PropertyValueFactory<Actividad, String>("formaDeOperar"));
         listaActividades = FXCollections.observableArrayList();
         tableActividad.setItems(listaActividades);
-    }
-  
-    private void guardarActividades() {
-        ObjetivoParticular objParticular = new ObjetivoParticular();
-        PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
-        objParticular.setIdObjetivoParticular(plan.obteneridObjetivoParticular()+1);
-        objParticular.setIdPlanDeTrabajo(plandetrabajo.getIdPlanDetrabajo());
-        objParticular.setMetas(txtMeta.getText());
-        objParticular.setObjetivo(txtObjetivoParticular.getText());
-        plan.guardarObjetivoParticular(objParticular);
-        listaActividades.forEach(actividad ->{
-            actividad.setIdObjetivoParticular(plan.obteneridObjetivoParticular());
-            if(!plan.guardarActividad(actividad)) {
-                mensaje("Error","Error en la conexion con la base de datos");
-            }
-        });
-    }
-  
-    private void guardarParticipantes() {
-        participantes.forEach(participante ->{
-            PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
-            if(!plan.guardarParticipante(new Participante(participante.getIdUsuarioAcademico(),
-                    plandetrabajo.getIdPlanDetrabajo()))) {
-                mensaje("Error","Error en la conexion con la base de datos");
-            }
-        });
-      
-        ObservableList<AnchorPane> listaParticipantes = listParticipantes.getItems();
-        int contador = 0;
-        for (AnchorPane part : listaParticipantes) {
-            for (Node node : part.getChildren()) {
-                if ("Participa".equals(node.getAccessibleText())) {
-                    if (((JFXCheckBox) node).isSelected()) {
-                        asistentes.add(participantes.get(contador));
-                        System.out.println("Participo: " + participantes.get(contador).getNombre() + " " + participantes.get(contador).getApellidos());
-                    }
-                }
-            }
-            contador++;
-        }
     }
 
     private void obtenerEELlenadas() {

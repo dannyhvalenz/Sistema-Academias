@@ -33,7 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM objetivoparticular WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
     </select>
     
-    <select id="obtenerObjetivoParticularEspecifico" resultType="model.pojos.PlanDeTrabajo" parameterType="Integer">
+    <select id="obtenerObjetivoParticularEspecifico" resultType="model.pojos.ObjetivoParticular" parameterType="Integer">
         SELECT idObjetivoParticular,objetivo,metas
         FROM objetivoparticular 
         WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
