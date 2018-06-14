@@ -113,6 +113,11 @@ public class EvaluacionController implements Initializable {
       txtHerramientas.setText(herramientas);
   }
   
+  public void cargarTabla(List<Evaluacion> evaluaciones){
+        inicializarTablaEvaluacion();
+        listaEvaluaciones = FXCollections.observableList(evaluaciones);
+  }
+  
   /**
    * 
    * Método para inicializar la tabla
@@ -161,6 +166,5 @@ public class EvaluacionController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    inicializarTablaEvaluacion();
   }
 }

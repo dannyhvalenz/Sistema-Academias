@@ -196,6 +196,7 @@ public class PlanDeTrabajoController implements Initializable {
                 EvaluacionController display = loader.getController();
                 StackPane p = loader.getRoot();
                 display.llenarDatos(tema, ee.getHerramientas());
+                display.cargarTabla(evaluaciones);
                 Tab tab = new Tab(ee.getNombre());
                 tab.setContent(p);
                 tabPanelEE.getTabs().add(tab);
