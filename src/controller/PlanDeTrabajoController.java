@@ -137,6 +137,7 @@ public class PlanDeTrabajoController implements Initializable {
         this.user = user;
         plandetrabajo = new PlanDeTrabajo();
         PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
+        inicializarTablaActividad();
         //cargarParticipantes();
         if(plan.obteneridPlanTrabajo() != null ){
             existe = true;
@@ -160,14 +161,10 @@ public class PlanDeTrabajoController implements Initializable {
             System.out.println("ID Objetivo Particular: " + idObjetivoParticular);
             List<Actividad> actividades = plan.obtenerActividades(idObjetivoParticular);
             for(Actividad act : actividades){
-                String accion = act.getAccion();
-                String fecha = act.getFecha();
-                String formaDeOperar = act.getFormaDeOperar();
-                Actividad actividad = new Actividad(accion, fecha,formaDeOperar);
+                listaActividades.add(act);
                 System.out.println("ID Actividad: " + act.getIdActividad());
                 //listaActividades.add(actividad);
             }
-            inicializarTablaActividad();
             
 
             //EEPLANDETRABAJO
