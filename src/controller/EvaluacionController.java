@@ -115,7 +115,9 @@ public class EvaluacionController implements Initializable {
   
   public void cargarTabla(List<Evaluacion> evaluaciones){
         inicializarTablaEvaluacion();
-        listaEvaluaciones = FXCollections.observableList(evaluaciones);
+        for(Evaluacion e : evaluaciones){
+            listaEvaluaciones.add(e);
+        }
   }
   
   /**
