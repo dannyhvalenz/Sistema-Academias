@@ -235,7 +235,7 @@ public class PlanDeTrabajoController implements Initializable {
             Date fechaHoy = Date.valueOf(localDate);
             plandetrabajo.setFechaAprobacion(fechaHoy);
             plandetrabajo.setProgramaEducativo("Ingenieria de software");
-            
+            cargarParticipantes();
             inicializarTablaActividad();
             AcademiaDAO academia = new AcademiaDAO();
             List<ExperienciaEducativa> nombresEE = academia.obtenerExperienciasEducativas(this.idAcademia);
