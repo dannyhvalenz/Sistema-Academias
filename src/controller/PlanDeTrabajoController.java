@@ -160,17 +160,31 @@ public class PlanDeTrabajoController implements Initializable {
             System.out.println("ID Objetivo Particular: " + idObjetivoParticular);
             List<Actividad> actividades = plan.obtenerActividades(idObjetivoParticular);
             for(Actividad act : actividades){
+                String accion = act.getAccion();
+                String fecha = act.getFecha();
+                String formaDeOperar = act.getFormaDeOperar();
+                Actividad actividad = new Actividad(accion, fecha,formaDeOperar);
                 System.out.println("ID Actividad: " + act.getIdActividad());
-//                listaActividades.add(act);
+                //listaActividades.add(actividad);
             }
-//            inicializarTablaActividad();
+            inicializarTablaActividad();
             
+
             //EEPLANDETRABAJO
             System.out.println("----------------------------EEPlanDeTrabajo----------------------------");
             List<EEPlanTrabajo> experiencias = plan.obtenerEEPlanDeTrabajo(idPlanDeTrabajo);
             for(EEPlanTrabajo ee : experiencias){
                 Integer IdEEPlanTrabajo = ee.getIdEEPlanTrabajo();
                 System.out.println("ID EEPlanDeTrabajo: " + IdEEPlanTrabajo);
+                
+                //RECUPERAR TEMA
+                Tema tema = plan.obtenerTemaDeEEPlanTrabajo(IdEEPlanTrabajo);
+                System.out.println("ID Tema: " + tema.getIdTema());
+                //RECUPERAR EVALUACION
+                List<Evaluacion> evaluaciones = plan.obtenerEvaluaciones(IdEEPlanTrabajo);
+                for(Evaluacion eval : evaluaciones){
+                    System.out.println("ID Evaluacion: " + eval.getIdEvaluacion());
+                }
                 
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/view/FormaDeEvaluacion.fxml"));
@@ -184,19 +198,6 @@ public class PlanDeTrabajoController implements Initializable {
                 Tab tab = new Tab(ee.getNombre());
                 tab.setContent(p);
                 tabPanelEE.getTabs().add(tab);
-                
-                
-                //RECUPERAR TEMA
-                Tema tema = plan.obtenerTemaDeEEPlanTrabajo(IdEEPlanTrabajo);
-                System.out.println("ID Tema: " + tema.getIdTema());
-                //RECUPERAR EVALUACION
-                List<Evaluacion> evaluaciones = plan.obtenerEvaluaciones(IdEEPlanTrabajo);
-                for(Evaluacion eval : evaluaciones){
-                    System.out.println("ID Evaluacion: " + eval.getIdEvaluacion());
-                }
-                
-                
-                
             }  
             //PARTICIPANTES
             System.out.println("----------------------------Participantes----------------------------");
@@ -250,6 +251,9 @@ public class PlanDeTrabajoController implements Initializable {
                 }
                 EvaluacionController display = loader.getController();
                 StackPane p = loader.getRoot();
+                
+                
+                
                 Tab tab = new Tab(ee.getNombre());
                 tab.setContent(p);
                 tabPanelEE.getTabs().add(tab);
@@ -314,8 +318,6 @@ public class PlanDeTrabajoController implements Initializable {
         listaActividades = FXCollections.observableArrayList();
         tableActividad.setItems(listaActividades);
     }
-
-    
     
     private void obtenerEELlenadasNuevoPlanTrabajo() {
         ObservableList<Tab> tabs = tabPanelEE.getTabs();

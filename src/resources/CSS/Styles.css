@@ -110,11 +110,11 @@ JFXListView .scroll-bar:vertical .thumb {
 }
 
 .jfx-tab-pane .tab-header-area .jfx-rippler {
-    -jfx-rippler-fill: #d4218d;
+    -jfx-rippler-fill: #ff334c;
 }
 
 .jfx-tab-pane .tab-selected-line {
-    -fx-background-color: #d4218d;
+    -fx-background-color: #ff334c;
 }
 
 .combo-box .list-cell {
@@ -138,13 +138,13 @@ JFXListView .scroll-bar:vertical .thumb {
 
 .combo-box-popup .list-view .list-cell:filled:selected,
 .combo-box-popup .list-view .list-cell:filled:selected:hover {
-    -fx-background-color: #d4218d;
+    -fx-background-color: #ff334c;
     -fx-text-fill: #555555;
 }
 
 .combo-box-popup .list-view .list-cell:filled:hover {
     -fx-background-color: white;
-    -fx-text-fill: #d4218d;
+    -fx-text-fill: #ff334c;
 }
 
 .combo-box-base {
