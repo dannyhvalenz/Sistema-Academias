@@ -194,6 +194,9 @@ public class PlanDeTrabajoController implements Initializable {
                 for(Evaluacion eval : evaluaciones){
                     System.out.println("ID Evaluacion: " + eval.getIdEvaluacion());
                 }
+                
+                
+                
             }  
             //PARTICIPANTES
             System.out.println("----------------------------Participantes----------------------------");
@@ -312,7 +315,9 @@ public class PlanDeTrabajoController implements Initializable {
         tableActividad.setItems(listaActividades);
     }
 
-    private void obtenerEELlenadas() {
+    
+    
+    private void obtenerEELlenadasNuevoPlanTrabajo() {
         ObservableList<Tab> tabs = tabPanelEE.getTabs();
         PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
         for (Tab t : tabs) {
@@ -362,14 +367,12 @@ public class PlanDeTrabajoController implements Initializable {
             }
             Integer idEEPlanTrabajo = plan.obteneridEEPlanTrabajo();
             tema.setIdEEPlanDeTrabajo(idEEPlanTrabajo);
-            
             evaluacionesEE.forEach(evaluacion -> {
                 evaluacion.setIdEEPlanTrabajo(idEEPlanTrabajo);
                     if(!plan.guardarEvaluacion(evaluacion)) {
                         mensaje("Error","Error en la conexion con la base de datos");
                     }
             });
-            
             if(!plan.guardarTema(tema)) {
                 mensaje("Error","Error en la conexion con la base de datos");
             }
@@ -405,11 +408,19 @@ public class PlanDeTrabajoController implements Initializable {
             plan.actualizarObjetivoParticularEspecifico(objParticular);
             System.out.println("Objetivo particular actualizado");
             //ACTIVIDADES
-            //listaActividades.forEach(actividad ->{
-                //if(!plan.guardarActividad(actividad)) {
-                    //mensaje("Error","Error en la conexion con la base de datos");
-                //}
-            //});
+            listaActividades.forEach(actividad ->{
+                Integer idObjetivoParticular = plan.obteneridObjetivoParticular();
+                if(idObjetivoParticular != null){
+                    if(!plan.eliminarActividad(idObjetivoParticular)){
+                        mensaje("Error","Error en la conexion con la base de datos");
+                        System.out.println("Error al eliminar una actividad");
+                    }
+                }
+                actividad.setIdObjetivoParticular(plan.obteneridObjetivoParticular());
+                if(!plan.guardarActividad(actividad)) {
+                    mensaje("Error","Error en la conexion con la base de datos");
+                }
+            });
             
             
             //EEPLANDETRABAJO//TEMAS//EVALUACION
@@ -432,7 +443,7 @@ public class PlanDeTrabajoController implements Initializable {
             plan.guardarObjetivoParticular(objParticular);
             System.out.println("Objetivo particular guardado");
             //EEPLANDETRABAJO//TEMAS//EVALUACION
-            obtenerEELlenadas();
+            obtenerEELlenadasNuevoPlanTrabajo();
             System.out.println("EEPlanDeTrabajo guardado");
             System.out.println("Tema guardado");
             System.out.println("Evaluacion guardado");

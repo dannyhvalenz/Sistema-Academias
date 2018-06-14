@@ -127,5 +127,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         INSERT INTO plandetrabajo (formato, fechaAprobacion, objetivoGeneral, programaEducativo)
         VALUES(#{formato},#{fechaAprobacion},#{objetivoGeneral},#{programaEducativo})
     </insert>
+    
+    <delete id="eliminarEvaluacion" parameterType="model.pojos.Evaluacion">
+        DELETE * FROM evaluacion WHERE idEEPlanTrabajo = #{idEEPlanTrabajo}
+    </delete>
+    
+    <delete id="eliminarActividad" parameterType="model.pojos.Actividad">
+        DELETE * FROM actividad WHERE idObjetivoParticular = #{idObjetivoParticular}
+    </delete>
+    
+    <delete id="eliminarParticipante" parameterType="model.pojos.Participante">
+        DELETE * FROM participante WHERE idPlanDeTrabajo = #{idPlanDeTrabajo}
+    </delete>
 </mapper>
 

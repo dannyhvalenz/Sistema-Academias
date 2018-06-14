@@ -451,4 +451,54 @@ public class PlanDeTrabajoDAO {
         return false;
     }
 
+    public boolean eliminarActividad(Integer idEEPlanTrabajo){
+        SqlSession conn = null;
+        try{
+            conn = MyBatisUtils.getSession();
+            conn.delete("PlanDeTrabajo.eliminarEvaluacion", idEEPlanTrabajo);
+            conn.commit();
+            return true;
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return false;
+    }
+    
+    public boolean eliminarEvaluacion(Integer idEEPlanTrabajo){
+        SqlSession conn = null;
+        try{
+            conn = MyBatisUtils.getSession();
+            conn.delete("PlanDeTrabajo.eliminarEvaluacion", idEEPlanTrabajo);
+            conn.commit();
+            return true;
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return false;
+    }
+        
+    public boolean eliminarParticipante(Integer idPlanDeTrabajo){
+        SqlSession conn = null;
+        try{
+            conn = MyBatisUtils.getSession();
+            conn.delete("PlanDeTrabajo.eliminarParticipante", idPlanDeTrabajo);
+            conn.commit();
+            return true;
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            if(conn!=null){
+                conn.close();
+            }
+        }
+        return false;
+    }
 }
