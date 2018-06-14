@@ -171,6 +171,21 @@ public class PlanDeTrabajoController implements Initializable {
             for(EEPlanTrabajo ee : experiencias){
                 Integer IdEEPlanTrabajo = ee.getIdEEPlanTrabajo();
                 System.out.println("ID EEPlanDeTrabajo: " + IdEEPlanTrabajo);
+                
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/view/FormaDeEvaluacion.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(PlanDeTrabajoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                EvaluacionController display = loader.getController();
+                StackPane p = loader.getRoot();
+                Tab tab = new Tab(ee.getNombre());
+                tab.setContent(p);
+                tabPanelEE.getTabs().add(tab);
+                
+                
                 //RECUPERAR TEMA
                 Tema tema = plan.obtenerTemaDeEEPlanTrabajo(IdEEPlanTrabajo);
                 System.out.println("ID Tema: " + tema.getIdTema());

@@ -55,6 +55,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE idObjetivoParticular = #{idObjetivoParticular}
     </update>
     
+    <update id="actualizarEEPlanDeTrabajo" parameterType="model.pojos.EEPlanTrabajo">
+        UPDATE eeplantrabajo SET
+        nombre = #{nombre},
+        herramientas = #{herramientas},
+        idPlanDeTrabajo = #{idPlanDeTrabajo}
+        WHERE idEEPlanTrabajo = #{idEEPlanTrabajo}
+    </update>
+    
     <select id="obtenerActividades" resultType="model.pojos.Actividad" parameterType="Integer">
         SELECT * FROM actividad WHERE idObjetivoParticular = #{idObjetivoParticular}
     </select>
