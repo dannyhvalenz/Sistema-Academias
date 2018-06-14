@@ -210,8 +210,8 @@ public class PlanDeTrabajoController implements Initializable {
             AcademiaDAO academia = new AcademiaDAO();
             List<Maestro> miembros = academia.obtenerMaestros(this.idAcademia);
             for(Maestro maestro : miembros){
-                 System.out.println("ID Maestro miembro: " + maestro.getIdUsuarioAcademico());
-                 FXMLLoader loader = new FXMLLoader();
+                System.out.println("ID Maestro miembro: " + maestro.getIdUsuarioAcademico());
+                FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/view/AsistenteAReunion.fxml"));
                 try {
                     loader.load();
@@ -221,6 +221,11 @@ public class PlanDeTrabajoController implements Initializable {
                 AsistenteAReunionController display = loader.getController();
                 AnchorPane panel = loader.getRoot();
                 display.llenarDatosAsistente(maestro.getNombre() + " " + maestro.getApellidos());
+                for(Maestro participante : maestros){
+                    if(maestro.getIdUsuarioAcademico() == participante.getIdUsuarioAcademico()) {
+                        display.checkAsistencia.setSelected(true);
+                    }
+                }
                 listParticipantes.getItems().add(panel);
             }
         }else{

@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 public class AsistenteAReunionController implements Initializable {
   
   @FXML
-  private JFXCheckBox checkAsistencia;
+  public JFXCheckBox checkAsistencia;
 
   @FXML
   private Label labelNombreMaestro;
