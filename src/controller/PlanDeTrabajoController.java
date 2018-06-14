@@ -137,7 +137,7 @@ public class PlanDeTrabajoController implements Initializable {
         this.user = user;
         plandetrabajo = new PlanDeTrabajo();
         PlanDeTrabajoDAO plan = new PlanDeTrabajoDAO();
-        cargarParticipantes();
+        //cargarParticipantes();
         if(plan.obteneridPlanTrabajo() != null ){
             existe = true;
             mensaje("Existe plan de trabajo", "Hay un plan de trabajo guardado en la Base de Datos");
@@ -195,6 +195,7 @@ public class PlanDeTrabajoController implements Initializable {
                 }
                 EvaluacionController display = loader.getController();
                 StackPane p = loader.getRoot();
+                
                 Tab tab = new Tab(ee.getNombre());
                 tab.setContent(p);
                 tabPanelEE.getTabs().add(tab);
@@ -204,29 +205,24 @@ public class PlanDeTrabajoController implements Initializable {
             List<Maestro> maestros = plan.obtenerParticipantes(idPlanDeTrabajo);
             for(Maestro participante : maestros){
                 System.out.println("ID Maestro participante: " + participante.getIdUsuarioAcademico());
-//                //ObservableList<AnchorPane>
+                
             }
-////            ObservableList<AnchorPane> listaParticipantes = listParticipantes.getItems();
-//            int contador = 0;
-//            for (AnchorPane part : listaParticipantes) {
-//                for (Node node : part.getChildren()) {
-//                    if ("Participa".equals(node.getAccessibleText())) {
-//                        if (((JFXCheckBox) node).isSelected()) {
-//                            asistentes.add(participantes.get(contador));
-//                            System.out.println("Participo: " + participantes.get(contador).getNombre());
-//                        }
-//                    }
-//                }
-//                contador++;
-//            }
-//            if (!asistentes.isEmpty()) {
-//                for(Maestro participante : asistentes){
-//                    plan.guardarParticipante(new Participante(participante.getIdUsuarioAcademico(), plan.obteneridPlanTrabajo()));
-//                    System.out.println("Participante guardado");
-//                }
-//            }else{
-//               mensaje("Error","Error en la conexion con la base de datos");
-//            }
+            AcademiaDAO academia = new AcademiaDAO();
+            List<Maestro> miembros = academia.obtenerMaestros(this.idAcademia);
+            for(Maestro maestro : miembros){
+                 System.out.println("ID Maestro miembro: " + maestro.getIdUsuarioAcademico());
+                 FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/view/AsistenteAReunion.fxml"));
+                try {
+                    loader.load();
+                } catch (IOException ex) {
+                    Logger.getLogger(PlanDeTrabajoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                AsistenteAReunionController display = loader.getController();
+                AnchorPane panel = loader.getRoot();
+                display.llenarDatosAsistente(maestro.getNombre() + " " + maestro.getApellidos());
+                listParticipantes.getItems().add(panel);
+            }
         }else{
             //plandetrabajo.setIdPlanDetrabajo(1);
             //System.out.println("ID del Nuevo Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
