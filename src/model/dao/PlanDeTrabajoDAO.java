@@ -143,7 +143,28 @@ public class PlanDeTrabajoDAO {
                 conn.close();
             }
         }
-    }        
+    }
+    
+    /**
+     * Actualizar una EEPlanTrabajo en especifico
+     * @param eeplantrabajo 
+     */
+    public void actualizarEEPlanDeTrabajo(EEPlanTrabajo eeplantrabajo) {
+        //PlanDeTrabajo plan = new PlanDeTrabajo();
+        SqlSession conn = null;
+        try {
+            conn = MyBatisUtils.getSession();
+            conn.update("PlanDeTrabajo.actualizarEEPlanDeTrabajo",eeplantrabajo);
+            conn.commit();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+        }
+    }
+    
     /**
      * Obtener las evaluaciones base obtenidas con base al Plan de Trabajo de la Academia perteneciente
      * @param idCurso id del curso del cual se esta creando el plan de curso

@@ -42,6 +42,7 @@ import model.pojos.Academia;
 import model.pojos.Actividad;
 import model.pojos.EEPlanTrabajo;
 import model.pojos.Evaluacion;
+import model.pojos.ExperienciaEducativa;
 import model.pojos.Maestro;
 import model.pojos.ObjetivoParticular;
 import model.pojos.Participante;
@@ -217,10 +218,11 @@ public class PlanDeTrabajoController implements Initializable {
             plandetrabajo.setProgramaEducativo("Ingenieria de software");
             
             inicializarTablaActividad();
-            
-            System.out.println(idAcademia);
-            String[] nombres = { "Programacion", "Principios de construccion", "Principos de Diseño"};
-            for (String nombre : nombres) {
+            AcademiaDAO academia = new AcademiaDAO();
+            List<ExperienciaEducativa> nombresEE = academia.obtenerExperienciasEducativas(this.idAcademia);
+            System.out.println("ID de la Academia: " + this.idAcademia);
+            //String[] nombres = { "Programacion", "Principios de construccion", "Principos de Diseño"};
+            for (ExperienciaEducativa ee : nombresEE) {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/view/FormaDeEvaluacion.fxml"));
                 try {
@@ -230,7 +232,7 @@ public class PlanDeTrabajoController implements Initializable {
                 }
                 EvaluacionController display = loader.getController();
                 StackPane p = loader.getRoot();
-                Tab tab = new Tab(nombre);
+                Tab tab = new Tab(ee.getNombre());
                 tab.setContent(p);
                 tabPanelEE.getTabs().add(tab);
             }
