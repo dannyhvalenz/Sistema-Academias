@@ -207,6 +207,7 @@ public class PlanDeTrabajoController implements Initializable {
                 System.out.println("ID Maestro participante: " + participante.getIdUsuarioAcademico());
                 
             }
+            
             AcademiaDAO academia = new AcademiaDAO();
             List<Maestro> miembros = academia.obtenerMaestros(this.idAcademia);
             for(Maestro maestro : miembros){
