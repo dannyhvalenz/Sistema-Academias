@@ -200,7 +200,6 @@ public class PlanDeTrabajoController implements Initializable {
             }  
             //PARTICIPANTES            //plandetrabajo.setIdPlanDetrabajo(1);
             //System.out.println("ID del Nuevo Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
-
             System.out.println("----------------------------Participantes----------------------------");
             List<Maestro> maestros = plan.obtenerParticipantes(idPlanDeTrabajo);
             for(Maestro participante : maestros){
@@ -240,7 +239,6 @@ public class PlanDeTrabajoController implements Initializable {
             AcademiaDAO academia = new AcademiaDAO();
             List<ExperienciaEducativa> nombresEE = academia.obtenerExperienciasEducativas(this.idAcademia);
             System.out.println("ID de la Academia: " + this.idAcademia);
-            //String[] nombres = { "Programacion", "Principios de construccion", "Principos de Diseño"};
             for (ExperienciaEducativa ee : nombresEE) {
                 FXMLLoader loader = new FXMLLoader();
                 loader.setLocation(getClass().getResource("/view/FormaDeEvaluacion.fxml"));
@@ -251,15 +249,11 @@ public class PlanDeTrabajoController implements Initializable {
                 }
                 EvaluacionController display = loader.getController();
                 StackPane p = loader.getRoot();
-                
-                
-                
                 Tab tab = new Tab(ee.getNombre());
                 tab.setContent(p);
                 tabPanelEE.getTabs().add(tab);
             }
         }
-        
     }
 
     private final ListChangeListener<Actividad> selectorTablaActividades = 
