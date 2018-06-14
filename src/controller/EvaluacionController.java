@@ -26,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import model.pojos.Evaluacion;
+import model.pojos.Tema;
 
 /**
  * @author Daniela Hernandez
@@ -52,6 +53,9 @@ public class EvaluacionController implements Initializable {
 
   @FXML
   private JFXTextArea txtPosterior;
+  
+  @FXML
+  private JFXTextArea txtHerramientas;
 
   @FXML
   private TableView<Evaluacion> tableEvaluacion;
@@ -102,6 +106,13 @@ public class EvaluacionController implements Initializable {
     }
   }
 
+  public void llenarDatos(Tema tema, String herramientas){
+      txtPrimerParcial.setText(tema.getPrimerParcial());
+      txtSegundoParcial.setText(tema.getSegundoParcial());
+      txtPosterior.setText(tema.getResto());
+      txtHerramientas.setText(herramientas);
+  }
+  
   /**
    * 
    * Método para inicializar la tabla

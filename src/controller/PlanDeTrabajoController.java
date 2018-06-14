@@ -195,12 +195,14 @@ public class PlanDeTrabajoController implements Initializable {
                 }
                 EvaluacionController display = loader.getController();
                 StackPane p = loader.getRoot();
-                
+                display.llenarDatos(tema, ee.getHerramientas());
                 Tab tab = new Tab(ee.getNombre());
                 tab.setContent(p);
                 tabPanelEE.getTabs().add(tab);
             }  
-            //PARTICIPANTES
+            //PARTICIPANTES            //plandetrabajo.setIdPlanDetrabajo(1);
+            //System.out.println("ID del Nuevo Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
+
             System.out.println("----------------------------Participantes----------------------------");
             List<Maestro> maestros = plan.obtenerParticipantes(idPlanDeTrabajo);
             for(Maestro participante : maestros){
@@ -230,8 +232,6 @@ public class PlanDeTrabajoController implements Initializable {
                 listParticipantes.getItems().add(panel);
             }
         }else{
-            //plandetrabajo.setIdPlanDetrabajo(1);
-            //System.out.println("ID del Nuevo Plan de Trabajo: " + plandetrabajo.getIdPlanDetrabajo());
             plandetrabajo.setFormato("plantrabajo");
             LocalDate localDate = LocalDate.now();
             Date fechaHoy = Date.valueOf(localDate);
