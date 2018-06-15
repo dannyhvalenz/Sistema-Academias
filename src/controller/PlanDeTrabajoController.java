@@ -451,6 +451,7 @@ public class PlanDeTrabajoController implements Initializable {
                 }
             });
             //PARTICIPANTES
+            asistentes.clear();
             ObservableList<AnchorPane> listaParticipantes = listParticipantes.getItems();
             int contador = 0;
             for (AnchorPane part : listaParticipantes) {
